@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)http://srdas.github.io/MLBook/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Data Science: Theories, Models, Algorithms, and Analytics</title>
+  
+  <meta name="description" content="Analytics with R.">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Data Science: Theories, Models, Algorithms, and Analytics">
+  <meta property="og:type" content="book">
+  
+  
+  <meta property="og:description" content="Analytics with R.">
+  <meta name="github-repo" content="rstudio/bookdown-demo">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Data Science: Theories, Models, Algorithms, and Analytics">
+  
+  <meta name="twitter:description" content="Analytics with R.">
+  
+
+<meta name="author" content="Sanjiv Ranjan Das">
+
+
+<meta name="date" content="2017-03-24">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+<link rel="next" href="http://srdas.github.io/MLBook/DataScience.html">
+
+<script src="./libs/jquery.min.js.download"></script>
+<link href="./libs/style.css" rel="stylesheet">
+<link href="./libs/plugin-bookdown.css" rel="stylesheet">
+<link href="./libs/plugin-highlight.css" rel="stylesheet">
+<link href="./libs/plugin-search.css" rel="stylesheet">
+<link href="./libs/plugin-fontsettings.css" rel="stylesheet">
+
+
+
+
+
+
+
+<script src="./libs/htmlwidgets.js.download"></script>
+<script src="./libs/datatables.js.download"></script>
+<link href="./libs/jquery.dataTables.min.css" rel="stylesheet">
+<link href="./libs/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="./libs/jquery.dataTables.min.js.download"></script>
+<link href="./libs/bokeh.min.css" rel="stylesheet">
+<link href="./libs/loader.css" rel="stylesheet">
+<script src="./libs/bokeh.min.js.download"></script>
+<script src="./libs/rbokeh.js.download"></script>
+<script src="./libs/d3.min.js.download"></script>
+<script src="./libs/forceNetwork.js.download"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="./libs/style(1).css" type="text/css">
+<script src="./libs/MathJax.js.download" id=""></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax.MathJax_FullWidth {text-align: center; display: table-cell!important; width: 10000em!important}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax_LineBox {display: table!important}
+.MathJax_LineBox span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Main; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Main-bold; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Main-italic; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Math-italic; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Caligraphic; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Size1; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Size2; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Size3; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Size4; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf?V=2.7.1') format('opentype')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body style=""><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"><br><br><br><br></div></div><div id="MathJax_Message" style="display: none;"></div>
+
+
+  <div class="book without-animation with-summary   font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary"><div class="book-search" role="search"><input type="search" class="form-control" placeholder="Type to search"></div>
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="http://srdas.github.io/MLBook/">Data Science</a></li>
+
+<li class="divider"></li>
+<li class="chapter active" data-level="" data-path="index.html"><a href="http://srdas.github.io/MLBook/index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="DataScience.html"><a href="http://srdas.github.io/MLBook/DataScience.html"><i class="fa fa-check"></i><b>1</b> The Art of Data Science</a><ul>
+<li class="chapter" data-level="1.1" data-path="DataScience.html"><a href="http://srdas.github.io/MLBook/DataScience.html#volume-velocity-variety"><i class="fa fa-check"></i><b>1.1</b> Volume, Velocity, Variety</a></li>
+<li class="chapter" data-level="1.2" data-path="DataScience.html"><a href="http://srdas.github.io/MLBook/DataScience.html#machine-learning"><i class="fa fa-check"></i><b>1.2</b> Machine Learning</a></li>
+<li class="chapter" data-level="1.3" data-path="DataScience.html"><a href="http://srdas.github.io/MLBook/DataScience.html#supervised-and-unsupervised-learning" title="1.3 Supervised and Unsupervised Learning"><i class="fa fa-check"></i><b>1.3</b> Supervised and Unsupervised Learning</a></li>
+<li class="chapter" data-level="1.4" data-path="DataScience.html"><a href="http://srdas.github.io/MLBook/DataScience.html#feature-selection"><i class="fa fa-check"></i><b>1.4</b> Feature Selection</a></li>
+<li class="chapter" data-level="1.5" data-path="DataScience.html"><a href="http://srdas.github.io/MLBook/DataScience.html#ensemble-learning"><i class="fa fa-check"></i><b>1.5</b> Ensemble Learning</a></li>
+<li class="chapter" data-level="1.6" data-path="DataScience.html"><a href="http://srdas.github.io/MLBook/DataScience.html#predictions-and-forecasts"><i class="fa fa-check"></i><b>1.6</b> Predictions and Forecasts</a></li>
+<li class="chapter" data-level="1.7" data-path="DataScience.html"><a href="http://srdas.github.io/MLBook/DataScience.html#innovation-and-experimentation"><i class="fa fa-check"></i><b>1.7</b> Innovation and Experimentation</a></li>
+<li class="chapter" data-level="1.8" data-path="DataScience.html"><a href="http://srdas.github.io/MLBook/DataScience.html#the-dark-side"><i class="fa fa-check"></i><b>1.8</b> The Dark Side</a><ul style="display: none;">
+<li class="chapter" data-level="1.8.1" data-path="DataScience.html"><a href="http://srdas.github.io/MLBook/DataScience.html#big-errors"><i class="fa fa-check"></i><b>1.8.1</b> Big Errors</a></li>
+<li class="chapter" data-level="1.8.2" data-path="DataScience.html"><a href="http://srdas.github.io/MLBook/DataScience.html#privacy"><i class="fa fa-check"></i><b>1.8.2</b> Privacy</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="DataScience.html"><a href="http://srdas.github.io/MLBook/DataScience.html#theories-models-intuition-causality-prediction-correlation" title="1.9 Theories, Models, Intuition, Causality, Prediction, Correlation"><i class="fa fa-check"></i><b>1.9</b> Theories, Models, Intuition, Causality, Prediction, Correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="MathPrimer.html"><a href="http://srdas.github.io/MLBook/MathPrimer.html"><i class="fa fa-check"></i><b>2</b> Got Math? The Very Beginning</a><ul>
+<li class="chapter" data-level="2.1" data-path="MathPrimer.html"><a href="http://srdas.github.io/MLBook/MathPrimer.html#logarithms-and-exponentials-continuous-compounding" title="2.1 Logarithms and Exponentials, Continuous Compounding"><i class="fa fa-check"></i><b>2.1</b> Logarithms and Exponentials, Continuous Compounding</a></li>
+<li class="chapter" data-level="2.2" data-path="MathPrimer.html"><a href="http://srdas.github.io/MLBook/MathPrimer.html#calculus"><i class="fa fa-check"></i><b>2.2</b> Calculus</a></li>
+<li class="chapter" data-level="2.3" data-path="MathPrimer.html"><a href="http://srdas.github.io/MLBook/MathPrimer.html#normal-distribution"><i class="fa fa-check"></i><b>2.3</b> Normal Distribution</a></li>
+<li class="chapter" data-level="2.4" data-path="MathPrimer.html"><a href="http://srdas.github.io/MLBook/MathPrimer.html#poisson-distribution"><i class="fa fa-check"></i><b>2.4</b> Poisson Distribution</a></li>
+<li class="chapter" data-level="2.5" data-path="MathPrimer.html"><a href="http://srdas.github.io/MLBook/MathPrimer.html#moments-of-random-variables"><i class="fa fa-check"></i><b>2.5</b> Moments of Random Variables</a></li>
+<li class="chapter" data-level="2.6" data-path="MathPrimer.html"><a href="http://srdas.github.io/MLBook/MathPrimer.html#combining-random-variables"><i class="fa fa-check"></i><b>2.6</b> Combining Random Variables</a></li>
+<li class="chapter" data-level="2.7" data-path="MathPrimer.html"><a href="http://srdas.github.io/MLBook/MathPrimer.html#vector-algebra"><i class="fa fa-check"></i><b>2.7</b> Vector Algebra</a></li>
+<li class="chapter" data-level="2.8" data-path="MathPrimer.html"><a href="http://srdas.github.io/MLBook/MathPrimer.html#basic-regression-model-ols"><i class="fa fa-check"></i><b>2.8</b> Basic Regression Model (OLS)</a></li>
+<li class="chapter" data-level="2.9" data-path="MathPrimer.html"><a href="http://srdas.github.io/MLBook/MathPrimer.html#regression-with-dummy-variables" title="2.9 Regression with Dummy Variables"><i class="fa fa-check"></i><b>2.9</b> Regression with Dummy Variables</a></li>
+<li class="chapter" data-level="2.10" data-path="MathPrimer.html"><a href="http://srdas.github.io/MLBook/MathPrimer.html#matrix-calculations"><i class="fa fa-check"></i><b>2.10</b> Matrix Calculations</a><ul style="display: none;">
+<li class="chapter" data-level="2.10.1" data-path="MathPrimer.html"><a href="http://srdas.github.io/MLBook/MathPrimer.html#diversification-of-a-portfolio"><i class="fa fa-check"></i><b>2.10.1</b> Diversification of a Portfolio</a></li>
+<li class="chapter" data-level="2.10.2" data-path="MathPrimer.html"><a href="http://srdas.github.io/MLBook/MathPrimer.html#diversification-exercise"><i class="fa fa-check"></i><b>2.10.2</b> Diversification exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="2.11" data-path="MathPrimer.html"><a href="http://srdas.github.io/MLBook/MathPrimer.html#matrix-equations"><i class="fa fa-check"></i><b>2.11</b> Matrix Equations</a><ul style="display: none;">
+<li class="chapter" data-level="2.11.1" data-path="MathPrimer.html"><a href="http://srdas.github.io/MLBook/MathPrimer.html#matrix-algebra-exercise"><i class="fa fa-check"></i><b>2.11.1</b> Matrix algebra exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="2.12" data-path="MathPrimer.html"><a href="http://srdas.github.io/MLBook/MathPrimer.html#matrix-calculus"><i class="fa fa-check"></i><b>2.12</b> Matrix Calculus</a><ul style="display: none;">
+<li class="chapter" data-level="2.12.1" data-path="MathPrimer.html"><a href="http://srdas.github.io/MLBook/MathPrimer.html#more-exercises"><i class="fa fa-check"></i><b>2.12.1</b> More exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2.13" data-path="MathPrimer.html"><a href="http://srdas.github.io/MLBook/MathPrimer.html#complex-numbers-and-eulers-equation" title="2.13 Complex Numbers and Euler’s Equation"><i class="fa fa-check"></i><b>2.13</b> Complex Numbers and Euler’s Equation</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html"><i class="fa fa-check"></i><b>3</b> Open Source: R Programming</a><ul>
+<li class="chapter" data-level="3.1" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html#got-r"><i class="fa fa-check"></i><b>3.1</b> Got R?</a><ul style="display: none;">
+<li class="chapter" data-level="3.1.1" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html#system-commands"><i class="fa fa-check"></i><b>3.1.1</b> System Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html#loading-data"><i class="fa fa-check"></i><b>3.2</b> Loading Data</a></li>
+<li class="chapter" data-level="3.3" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html#getting-external-stock-data"><i class="fa fa-check"></i><b>3.3</b> Getting External Stock Data</a></li>
+<li class="chapter" data-level="3.4" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html#data-frames"><i class="fa fa-check"></i><b>3.4</b> Data Frames</a></li>
+<li class="chapter" data-level="3.5" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html#higher-order-moments"><i class="fa fa-check"></i><b>3.5</b> Higher-Order Moments</a></li>
+<li class="chapter" data-level="3.6" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html#reading-space-delimited-files"><i class="fa fa-check"></i><b>3.6</b> Reading space delimited files</a></li>
+<li class="chapter" data-level="3.7" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html#pipes-with-magrittr"><i class="fa fa-check"></i><b>3.7</b> Pipes with <em>magrittr</em></a></li>
+<li class="chapter" data-level="3.8" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html#matrices"><i class="fa fa-check"></i><b>3.8</b> Matrices</a></li>
+<li class="chapter" data-level="3.9" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html#root-finding"><i class="fa fa-check"></i><b>3.9</b> Root Finding</a></li>
+<li class="chapter" data-level="3.10" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html#regression"><i class="fa fa-check"></i><b>3.10</b> Regression</a></li>
+<li class="chapter" data-level="3.11" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html#parts-of-a-regression"><i class="fa fa-check"></i><b>3.11</b> Parts of a regression</a></li>
+<li class="chapter" data-level="3.12" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html#heteroskedasticity"><i class="fa fa-check"></i><b>3.12</b> Heteroskedasticity</a></li>
+<li class="chapter" data-level="3.13" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html#auto-regressive-models"><i class="fa fa-check"></i><b>3.13</b> Auto-Regressive Models</a></li>
+<li class="chapter" data-level="3.14" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html#maximum-likelihood"><i class="fa fa-check"></i><b>3.14</b> Maximum Likelihood</a></li>
+<li class="chapter" data-level="3.15" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html#logit"><i class="fa fa-check"></i><b>3.15</b> Logit</a></li>
+<li class="chapter" data-level="3.16" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html#probit"><i class="fa fa-check"></i><b>3.16</b> Probit</a></li>
+<li class="chapter" data-level="3.17" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html#arch-and-garch"><i class="fa fa-check"></i><b>3.17</b> ARCH and GARCH</a></li>
+<li class="chapter" data-level="3.18" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html#vector-autoregression"><i class="fa fa-check"></i><b>3.18</b> Vector Autoregression</a></li>
+<li class="chapter" data-level="3.19" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html#solving-non-linear-equations"><i class="fa fa-check"></i><b>3.19</b> Solving Non-Linear Equations</a></li>
+<li class="chapter" data-level="3.20" data-path="IntroductoryRprogamming.html"><a href="http://srdas.github.io/MLBook/IntroductoryRprogamming.html#web-enabling-r-functions"><i class="fa fa-check"></i><b>3.20</b> Web-Enabling R Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html" title="4 MoRe: Data Handling and Other Useful Things"><i class="fa fa-check"></i><b>4</b> MoRe: Data Handling and Other Useful Things</a><ul>
+<li class="chapter" data-level="4.1" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#data-extraction-of-stocks-using-the-quantmod-package" title="4.1 Data Extraction of stocks using the quantmod package"><i class="fa fa-check"></i><b>4.1</b> Data Extraction of stocks using the <em>quantmod</em> package</a><ul style="display: none;">
+<li class="chapter" data-level="4.1.1" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#print-the-length-of-each-stock-series."><i class="fa fa-check"></i><b>4.1.1</b> Print the length of each stock series.</a></li>
+<li class="chapter" data-level="4.1.2" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#convert-closing-adjusted-prices-of-all-stocks-into-individual-data.frames."><i class="fa fa-check"></i><b>4.1.2</b> Convert closing adjusted prices of all stocks into individual data.frames.</a></li>
+<li class="chapter" data-level="4.1.3" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#make-a-single-data-frame"><i class="fa fa-check"></i><b>4.1.3</b> Make a single data frame</a></li>
+<li class="chapter" data-level="4.1.4" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#plot-the-stock-series"><i class="fa fa-check"></i><b>4.1.4</b> Plot the stock series</a></li>
+<li class="chapter" data-level="4.1.5" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#convert-the-data-into-returns"><i class="fa fa-check"></i><b>4.1.5</b> Convert the data into returns</a></li>
+<li class="chapter" data-level="4.1.6" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#descriptive-statistics"><i class="fa fa-check"></i><b>4.1.6</b> Descriptive statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#correlation-matrix"><i class="fa fa-check"></i><b>4.2</b> Correlation matrix</a><ul style="display: none;">
+<li class="chapter" data-level="4.2.1" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#correlogram"><i class="fa fa-check"></i><b>4.2.1</b> Correlogram</a></li>
+<li class="chapter" data-level="4.2.2" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#market-regression"><i class="fa fa-check"></i><b>4.2.2</b> Market regression</a></li>
+<li class="chapter" data-level="4.2.3" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#return-versus-systematic-risk"><i class="fa fa-check"></i><b>4.2.3</b> Return versus systematic risk</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#using-the-merge-function"><i class="fa fa-check"></i><b>4.3</b> Using the <em>merge</em> function</a><ul style="display: none;">
+<li class="chapter" data-level="4.3.1" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#extracting-online-corporate-data"><i class="fa fa-check"></i><b>4.3.1</b> Extracting online corporate data</a></li>
+<li class="chapter" data-level="4.3.2" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#get-all-stock-symbols-from-exchanges"><i class="fa fa-check"></i><b>4.3.2</b> Get all stock symbols from exchanges</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#using-the-dt-package"><i class="fa fa-check"></i><b>4.4</b> Using the DT package</a></li>
+<li class="chapter" data-level="4.5" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#web-scraping"><i class="fa fa-check"></i><b>4.5</b> Web scraping</a></li>
+<li class="chapter" data-level="4.6" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#using-the-apply-class-of-functions" title="4.6 Using the apply class of functions"><i class="fa fa-check"></i><b>4.6</b> Using the <em>apply</em> class of functions</a></li>
+<li class="chapter" data-level="4.7" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#getting-interest-rate-data-from-fred" title="4.7 Getting interest rate data from FRED"><i class="fa fa-check"></i><b>4.7</b> Getting interest rate data from FRED</a><ul style="display: none;">
+<li class="chapter" data-level="4.7.1" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#using-the-custom-function"><i class="fa fa-check"></i><b>4.7.1</b> Using the custom function</a></li>
+<li class="chapter" data-level="4.7.2" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#organize-the-data-by-date"><i class="fa fa-check"></i><b>4.7.2</b> Organize the data by date</a></li>
+<li class="chapter" data-level="4.7.3" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#handling-missing-values"><i class="fa fa-check"></i><b>4.7.3</b> Handling missing values</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#cross-sectional-data-an-example" title="4.8 Cross-Sectional Data (an example)"><i class="fa fa-check"></i><b>4.8</b> Cross-Sectional Data (an example)</a><ul style="display: none;">
+<li class="chapter" data-level="4.8.1" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#access-file-from-the-web-using-the-readlines-function"><i class="fa fa-check"></i><b>4.8.1</b> Access file from the web using the <em>readLines</em> function</a></li>
+<li class="chapter" data-level="4.8.2" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#failed-banks-by-state"><i class="fa fa-check"></i><b>4.8.2</b> Failed banks by State</a></li>
+<li class="chapter" data-level="4.8.3" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#use-the-aggregate-function-for-subtotals"><i class="fa fa-check"></i><b>4.8.3</b> Use the <em>aggregate</em> function (for subtotals)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#handling-dates-with-lubridate"><i class="fa fa-check"></i><b>4.9</b> Handling dates with <em>lubridate</em></a><ul style="display: none;">
+<li class="chapter" data-level="4.9.1" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#by-month"><i class="fa fa-check"></i><b>4.9.1</b> By Month</a></li>
+<li class="chapter" data-level="4.9.2" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#by-day"><i class="fa fa-check"></i><b>4.9.2</b> By Day</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#using-the-data.table-package"><i class="fa fa-check"></i><b>4.10</b> Using the <em>data.table</em> package</a><ul style="display: none;">
+<li class="chapter" data-level="4.10.1" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#california-crime-statistics"><i class="fa fa-check"></i><b>4.10.1</b> California Crime Statistics</a></li>
+<li class="chapter" data-level="4.10.2" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#examine-the-data.table"><i class="fa fa-check"></i><b>4.10.2</b> Examine the <em>data.table</em></a></li>
+<li class="chapter" data-level="4.10.3" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#indexing-the-data.table"><i class="fa fa-check"></i><b>4.10.3</b> Indexing the <em>data.table</em></a></li>
+<li class="chapter" data-level="4.10.4" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#plotting-from-the-data.table"><i class="fa fa-check"></i><b>4.10.4</b> Plotting from the <em>data.table</em></a></li>
+<li class="chapter" data-level="4.10.5" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#bay-area-bike-share-data"><i class="fa fa-check"></i><b>4.10.5</b> Bay Area Bike Share data</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#the-plyr-package-family"><i class="fa fa-check"></i><b>4.11</b> The <em>plyr</em> package family</a><ul style="display: none;">
+<li class="chapter" data-level="4.11.1" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#filter-the-data"><i class="fa fa-check"></i><b>4.11.1</b> Filter the data</a></li>
+<li class="chapter" data-level="4.11.2" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#sorting-using-the-arrange-function"><i class="fa fa-check"></i><b>4.11.2</b> Sorting using the <em>arrange</em> function</a></li>
+<li class="chapter" data-level="4.11.3" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#reverse-order-sort"><i class="fa fa-check"></i><b>4.11.3</b> Reverse order sort</a></li>
+<li class="chapter" data-level="4.11.4" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#descriptive-statistics-1"><i class="fa fa-check"></i><b>4.11.4</b> Descriptive statistics</a></li>
+<li class="chapter" data-level="4.11.5" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#other-functions-in-dplyr"><i class="fa fa-check"></i><b>4.11.5</b> Other functions in <em>dplyr</em></a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#application-to-ipo-data"><i class="fa fa-check"></i><b>4.12</b> Application to IPO Data</a></li>
+<li class="chapter" data-level="4.13" data-path="MoreDataHandling.html"><a href="http://srdas.github.io/MLBook/MoreDataHandling.html#bokeh-plots"><i class="fa fa-check"></i><b>4.13</b> Bokeh plots</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Shiny.html"><a href="http://srdas.github.io/MLBook/Shiny.html"><i class="fa fa-check"></i><b>5</b> Interactive applications with <em>Shiny</em></a><ul>
+<li class="chapter" data-level="5.1" data-path="Shiny.html"><a href="http://srdas.github.io/MLBook/Shiny.html#the-black-scholes-merton-1973-model" title="5.1 The Black-Scholes-Merton (1973) model"><i class="fa fa-check"></i><b>5.1</b> The Black-Scholes-Merton (1973) model</a></li>
+<li class="chapter" data-level="5.2" data-path="Shiny.html"><a href="http://srdas.github.io/MLBook/Shiny.html#the-application-program"><i class="fa fa-check"></i><b>5.2</b> The application program</a></li>
+<li class="chapter" data-level="5.3" data-path="Shiny.html"><a href="http://srdas.github.io/MLBook/Shiny.html#running-the-app"><i class="fa fa-check"></i><b>5.3</b> Running the App</a></li>
+<li class="chapter" data-level="5.4" data-path="Shiny.html"><a href="http://srdas.github.io/MLBook/Shiny.html#server-section-of-the-app"><i class="fa fa-check"></i><b>5.4</b> Server section of the App</a></li>
+<li class="chapter" data-level="5.5" data-path="Shiny.html"><a href="http://srdas.github.io/MLBook/Shiny.html#ui-section-of-the-app"><i class="fa fa-check"></i><b>5.5</b> UI section of the App</a></li>
+<li class="chapter" data-level="5.6" data-path="Shiny.html"><a href="http://srdas.github.io/MLBook/Shiny.html#using-the-reactive-mode-in-the-app" title="5.6 Using the reactive mode in the app"><i class="fa fa-check"></i><b>5.6</b> Using the <em>reactive</em> mode in the app</a></li>
+<li class="chapter" data-level="5.7" data-path="Shiny.html"><a href="http://srdas.github.io/MLBook/Shiny.html#market-liquidity-in-real-time-using-shiny" title="5.7 Market Liquidity in Real Time using Shiny"><i class="fa fa-check"></i><b>5.7</b> Market Liquidity in Real Time using <em>Shiny</em></a></li>
+<li class="chapter" data-level="5.8" data-path="Shiny.html"><a href="http://srdas.github.io/MLBook/Shiny.html#program-files"><i class="fa fa-check"></i><b>5.8</b> Program files</a></li>
+<li class="chapter" data-level="5.9" data-path="Shiny.html"><a href="http://srdas.github.io/MLBook/Shiny.html#using-shiny-with-data-table"><i class="fa fa-check"></i><b>5.9</b> Using <em>Shiny</em> with Data Table</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="BayesModels.html"><a href="http://srdas.github.io/MLBook/BayesModels.html" title="6 Bayes Models: Learning from Experience"><i class="fa fa-check"></i><b>6</b> Bayes Models: Learning from Experience</a><ul>
+<li class="chapter" data-level="6.1" data-path="BayesModels.html"><a href="http://srdas.github.io/MLBook/BayesModels.html#bayes-theorem"><i class="fa fa-check"></i><b>6.1</b> Bayes’ Theorem</a></li>
+<li class="chapter" data-level="6.2" data-path="BayesModels.html"><a href="http://srdas.github.io/MLBook/BayesModels.html#example-aids-testing"><i class="fa fa-check"></i><b>6.2</b> Example: Aids Testing</a></li>
+<li class="chapter" data-level="6.3" data-path="BayesModels.html"><a href="http://srdas.github.io/MLBook/BayesModels.html#computational-approach-using-sets" title="6.3 Computational Approach using Sets"><i class="fa fa-check"></i><b>6.3</b> Computational Approach using Sets</a></li>
+<li class="chapter" data-level="6.4" data-path="BayesModels.html"><a href="http://srdas.github.io/MLBook/BayesModels.html#a-second-opinion"><i class="fa fa-check"></i><b>6.4</b> A Second Opinion</a></li>
+<li class="chapter" data-level="6.5" data-path="BayesModels.html"><a href="http://srdas.github.io/MLBook/BayesModels.html#correlated-default"><i class="fa fa-check"></i><b>6.5</b> Correlated Default</a><ul style="display: none;">
+<li class="chapter" data-level="6.5.1" data-path="BayesModels.html"><a href="http://srdas.github.io/MLBook/BayesModels.html#indicator-functions-for-default"><i class="fa fa-check"></i><b>6.5.1</b> Indicator Functions for Default</a></li>
+<li class="chapter" data-level="6.5.2" data-path="BayesModels.html"><a href="http://srdas.github.io/MLBook/BayesModels.html#default-correlation"><i class="fa fa-check"></i><b>6.5.2</b> Default Correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="BayesModels.html"><a href="http://srdas.github.io/MLBook/BayesModels.html#continuous-space-bayes-theorem" title="6.6 Continuous Space Bayes Theorem"><i class="fa fa-check"></i><b>6.6</b> Continuous Space Bayes Theorem</a><ul style="display: none;">
+<li class="chapter" data-level="6.6.1" data-path="BayesModels.html"><a href="http://srdas.github.io/MLBook/BayesModels.html#formulation"><i class="fa fa-check"></i><b>6.6.1</b> Formulation</a></li>
+<li class="chapter" data-level="6.6.2" data-path="BayesModels.html"><a href="http://srdas.github.io/MLBook/BayesModels.html#posterior-distribution"><i class="fa fa-check"></i><b>6.6.2</b> Posterior Distribution</a></li>
+<li class="chapter" data-level="6.6.3" data-path="BayesModels.html"><a href="http://srdas.github.io/MLBook/BayesModels.html#example"><i class="fa fa-check"></i><b>6.6.3</b> Example</a></li>
+<li class="chapter" data-level="6.6.4" data-path="BayesModels.html"><a href="http://srdas.github.io/MLBook/BayesModels.html#general-formula-for-n-sequential-updates"><i class="fa fa-check"></i><b>6.6.4</b> General Formula for <span class="math inline"><span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" style="width: 0.717em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.598em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.61em, 1000.6em, 2.384em, -999.997em); top: -2.199em; left: 0em;"><span class="mrow" id="MathJax-Span-2"><span class="mi" id="MathJax-Span-3" style="font-family: MathJax_Math-italic;">n</span></span><span style="display: inline-block; width: 0px; height: 2.205em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.068em; border-left: 0px solid; width: 0px; height: 0.718em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi></math></span></span><script type="math/tex" id="MathJax-Element-1">n</script></span> sequential updates</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="BayesModels.html"><a href="http://srdas.github.io/MLBook/BayesModels.html#bayes-classifier"><i class="fa fa-check"></i><b>6.7</b> Bayes Classifier</a><ul style="display: none;">
+<li class="chapter" data-level="6.7.1" data-path="BayesModels.html"><a href="http://srdas.github.io/MLBook/BayesModels.html#example-1"><i class="fa fa-check"></i><b>6.7.1</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="BayesModels.html"><a href="http://srdas.github.io/MLBook/BayesModels.html#bayes-nets"><i class="fa fa-check"></i><b>6.8</b> Bayes Nets</a></li>
+<li class="chapter" data-level="6.9" data-path="BayesModels.html"><a href="http://srdas.github.io/MLBook/BayesModels.html#bayes-in-marketing"><i class="fa fa-check"></i><b>6.9</b> Bayes in Marketing</a></li>
+<li class="chapter" data-level="6.10" data-path="BayesModels.html"><a href="http://srdas.github.io/MLBook/BayesModels.html#other-marketing-applications"><i class="fa fa-check"></i><b>6.10</b> Other Marketing Applications</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html"><i class="fa fa-check"></i><b>7</b> More than Words: Text Analytics</a><ul>
+<li class="chapter" data-level="7.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#introduction"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#text-as-data"><i class="fa fa-check"></i><b>7.2</b> Text as Data</a></li>
+<li class="chapter" data-level="7.3" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#definition-text-mining"><i class="fa fa-check"></i><b>7.3</b> Definition: Text-Mining</a></li>
+<li class="chapter" data-level="7.4" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#data-and-algorithms"><i class="fa fa-check"></i><b>7.4</b> Data and Algorithms</a></li>
+<li class="chapter" data-level="7.5" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#text-extraction"><i class="fa fa-check"></i><b>7.5</b> Text Extraction</a></li>
+<li class="chapter" data-level="7.6" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#string-parsing"><i class="fa fa-check"></i><b>7.6</b> String Parsing</a></li>
+<li class="chapter" data-level="7.7" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#sort-by-length"><i class="fa fa-check"></i><b>7.7</b> Sort by Length</a></li>
+<li class="chapter" data-level="7.8" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#text-cleanup"><i class="fa fa-check"></i><b>7.8</b> Text cleanup</a></li>
+<li class="chapter" data-level="7.9" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#the-xml-package"><i class="fa fa-check"></i><b>7.9</b> The <em>XML</em> Package</a><ul style="display: none;">
+<li class="chapter" data-level="7.9.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#processing-xml-files-in-r-into-a-data-frame"><i class="fa fa-check"></i><b>7.9.1</b> Processing XML files in R into a data frame</a></li>
+<li class="chapter" data-level="7.9.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#creating-a-xml-file-from-a-data-frame"><i class="fa fa-check"></i><b>7.9.2</b> Creating a XML file from a data frame</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#the-response-to-news"><i class="fa fa-check"></i><b>7.10</b> The Response to News</a><ul style="display: none;">
+<li class="chapter" data-level="7.10.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#das-martinez-jerez-and-tufano-fm-2005"><i class="fa fa-check"></i><b>7.10.1</b> Das, Martinez-Jerez, and Tufano (FM 2005)</a></li>
+<li class="chapter" data-level="7.10.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#breakdown-of-news-flow"><i class="fa fa-check"></i><b>7.10.2</b> Breakdown of News Flow</a></li>
+<li class="chapter" data-level="7.10.3" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#frequency-of-postings"><i class="fa fa-check"></i><b>7.10.3</b> Frequency of Postings</a></li>
+<li class="chapter" data-level="7.10.4" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#weekly-posting"><i class="fa fa-check"></i><b>7.10.4</b> Weekly Posting</a></li>
+<li class="chapter" data-level="7.10.5" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#intraday-posting"><i class="fa fa-check"></i><b>7.10.5</b> Intraday Posting</a></li>
+<li class="chapter" data-level="7.10.6" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#number-of-characters-per-posting"><i class="fa fa-check"></i><b>7.10.6</b> Number of Characters per Posting</a></li>
+</ul></li>
+<li class="chapter" data-level="7.11" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#text-handling"><i class="fa fa-check"></i><b>7.11</b> Text Handling</a><ul style="display: none;">
+<li class="chapter" data-level="7.11.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#string-detection"><i class="fa fa-check"></i><b>7.11.1</b> String Detection</a></li>
+<li class="chapter" data-level="7.11.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#cleaning-text"><i class="fa fa-check"></i><b>7.11.2</b> Cleaning Text</a></li>
+</ul></li>
+<li class="chapter" data-level="7.12" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#package-tm"><i class="fa fa-check"></i><b>7.12</b> Package <em>tm</em></a><ul style="display: none;">
+<li class="chapter" data-level="7.12.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#a-second-example"><i class="fa fa-check"></i><b>7.12.1</b> A second example</a></li>
+<li class="chapter" data-level="7.12.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#function-tm_map"><i class="fa fa-check"></i><b>7.12.2</b> Function <em>tm_map</em></a></li>
+<li class="chapter" data-level="7.12.3" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#bag-of-words"><i class="fa fa-check"></i><b>7.12.3</b> Bag of Words</a></li>
+<li class="chapter" data-level="7.12.4" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#example-on-my-bio-page"><i class="fa fa-check"></i><b>7.12.4</b> Example (on my bio page)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.13" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#term-document-matrix-tdm"><i class="fa fa-check"></i><b>7.13</b> Term Document Matrix (TDM)</a></li>
+<li class="chapter" data-level="7.14" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#term-frequency---inverse-document-frequency-tf-idf" title="7.14 Term Frequency - Inverse Document Frequency (TF-IDF)"><i class="fa fa-check"></i><b>7.14</b> Term Frequency - Inverse Document Frequency (TF-IDF)</a><ul style="display: none;">
+<li class="chapter" data-level="7.14.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#example-of-td-idf"><i class="fa fa-check"></i><b>7.14.1</b> Example of TD-IDF</a></li>
+<li class="chapter" data-level="7.14.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#tf-idf-in-the-tm-package"><i class="fa fa-check"></i><b>7.14.2</b> TF-IDF in the <strong>tm</strong> package</a></li>
+</ul></li>
+<li class="chapter" data-level="7.15" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#cosine-similarity-in-the-text-domain" title="7.15 Cosine Similarity in the Text Domain"><i class="fa fa-check"></i><b>7.15</b> Cosine Similarity in the Text Domain</a></li>
+<li class="chapter" data-level="7.16" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#using-the-anlp-package-for-bigrams-and-trigrams" title="7.16 Using the ANLP package for bigrams and trigrams"><i class="fa fa-check"></i><b>7.16</b> Using the ANLP package for bigrams and trigrams</a></li>
+<li class="chapter" data-level="7.17" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#wordclouds"><i class="fa fa-check"></i><b>7.17</b> Wordclouds</a></li>
+<li class="chapter" data-level="7.18" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#manipulating-text"><i class="fa fa-check"></i><b>7.18</b> Manipulating Text</a><ul style="display: none;">
+<li class="chapter" data-level="7.18.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#stemming"><i class="fa fa-check"></i><b>7.18.1</b> Stemming</a></li>
+<li class="chapter" data-level="7.18.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#regular-expressions"><i class="fa fa-check"></i><b>7.18.2</b> Regular Expressions</a></li>
+<li class="chapter" data-level="7.18.3" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#complex-regular-expressions-using-grep"><i class="fa fa-check"></i><b>7.18.3</b> Complex Regular Expressions using <em>grep</em></a></li>
+<li class="chapter" data-level="7.18.4" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#using-grep-for-emails"><i class="fa fa-check"></i><b>7.18.4</b> Using <em>grep</em> for emails</a></li>
+</ul></li>
+<li class="chapter" data-level="7.19" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#web-extraction-using-the-rvest-package" title="7.19 Web Extraction using the rvest package"><i class="fa fa-check"></i><b>7.19</b> Web Extraction using the <em>rvest</em> package</a><ul style="display: none;">
+<li class="chapter" data-level="7.19.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#program-to-read-a-web-page-using-the-selector-gadget"><i class="fa fa-check"></i><b>7.19.1</b> Program to read a web page using the selector gadget</a></li>
+<li class="chapter" data-level="7.19.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#program-to-read-a-web-table-using-the-selector-gadget"><i class="fa fa-check"></i><b>7.19.2</b> Program to read a web table using the selector gadget</a></li>
+<li class="chapter" data-level="7.19.3" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#program-to-read-a-web-table-into-a-data-frame"><i class="fa fa-check"></i><b>7.19.3</b> Program to read a web table into a data frame</a></li>
+</ul></li>
+<li class="chapter" data-level="7.20" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#using-the-rselenium-package"><i class="fa fa-check"></i><b>7.20</b> Using the <em>rselenium</em> package</a><ul style="display: none;">
+<li class="chapter" data-level="7.20.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#application-to-google-scholar-data"><i class="fa fa-check"></i><b>7.20.1</b> Application to Google Scholar data</a></li>
+</ul></li>
+<li class="chapter" data-level="7.21" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#web-apis"><i class="fa fa-check"></i><b>7.21</b> Web APIs</a><ul style="display: none;">
+<li class="chapter" data-level="7.21.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#twitter"><i class="fa fa-check"></i><b>7.21.1</b> Twitter</a></li>
+<li class="chapter" data-level="7.21.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#accessing-twitter"><i class="fa fa-check"></i><b>7.21.2</b> Accessing Twitter</a></li>
+<li class="chapter" data-level="7.21.3" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#using-the-twitter-package"><i class="fa fa-check"></i><b>7.21.3</b> Using the <em>twitteR</em> package</a></li>
+</ul></li>
+<li class="chapter" data-level="7.22" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#quick-process"><i class="fa fa-check"></i><b>7.22</b> Quick Process</a><ul style="display: none;">
+<li class="chapter" data-level="7.22.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#getting-streaming-data-from-twitter"><i class="fa fa-check"></i><b>7.22.1</b> Getting Streaming Data from Twitter</a></li>
+<li class="chapter" data-level="7.22.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#retrieving-tweets-of-a-particular-user-over-a-60-second-time-period"><i class="fa fa-check"></i><b>7.22.2</b> Retrieving tweets of a particular user over a 60 second time period</a></li>
+<li class="chapter" data-level="7.22.3" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#streaming-messages-from-the-accounts-your-user-follows."><i class="fa fa-check"></i><b>7.22.3</b> Streaming messages from the accounts your user follows.</a></li>
+<li class="chapter" data-level="7.22.4" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#facebook"><i class="fa fa-check"></i><b>7.22.4</b> Facebook</a></li>
+<li class="chapter" data-level="7.22.5" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#examples"><i class="fa fa-check"></i><b>7.22.5</b> Examples</a></li>
+<li class="chapter" data-level="7.22.6" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#yelp---setting-up-an-authorization"><i class="fa fa-check"></i><b>7.22.6</b> Yelp - Setting up an authorization</a></li>
+<li class="chapter" data-level="7.22.7" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#yelp---handshaking-with-the-api"><i class="fa fa-check"></i><b>7.22.7</b> Yelp - handshaking with the API</a></li>
+</ul></li>
+<li class="chapter" data-level="7.23" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#dictionaries"><i class="fa fa-check"></i><b>7.23</b> Dictionaries</a></li>
+<li class="chapter" data-level="7.24" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#lexicons"><i class="fa fa-check"></i><b>7.24</b> Lexicons</a><ul style="display: none;">
+<li class="chapter" data-level="7.24.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#constructing-a-lexicon"><i class="fa fa-check"></i><b>7.24.1</b> Constructing a lexicon</a></li>
+<li class="chapter" data-level="7.24.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#lexicons-as-word-lists"><i class="fa fa-check"></i><b>7.24.2</b> Lexicons as Word Lists</a></li>
+<li class="chapter" data-level="7.24.3" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#negation-tagging"><i class="fa fa-check"></i><b>7.24.3</b> Negation Tagging</a></li>
+</ul></li>
+<li class="chapter" data-level="7.25" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#scoring-text"><i class="fa fa-check"></i><b>7.25</b> Scoring Text</a></li>
+<li class="chapter" data-level="7.26" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#mood-scoring-using-harvard-inquirer" title="7.26 Mood Scoring using Harvard Inquirer"><i class="fa fa-check"></i><b>7.26</b> Mood Scoring using Harvard Inquirer</a><ul style="display: none;">
+<li class="chapter" data-level="7.26.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#creating-positive-and-negative-word-lists"><i class="fa fa-check"></i><b>7.26.1</b> Creating Positive and Negative Word Lists</a></li>
+<li class="chapter" data-level="7.26.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#one-function-to-rule-all-text"><i class="fa fa-check"></i><b>7.26.2</b> One Function to Rule All Text</a></li>
+<li class="chapter" data-level="7.26.3" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#example-2"><i class="fa fa-check"></i><b>7.26.3</b> Example</a></li>
+<li class="chapter" data-level="7.26.4" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#mood-scoring-text"><i class="fa fa-check"></i><b>7.26.4</b> Mood Scoring Text</a></li>
+</ul></li>
+<li class="chapter" data-level="7.27" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#language-detection-and-translation" title="7.27 Language Detection and Translation"><i class="fa fa-check"></i><b>7.27</b> Language Detection and Translation</a><ul style="display: none;">
+<li class="chapter" data-level="7.27.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#language-translation"><i class="fa fa-check"></i><b>7.27.1</b> Language Translation</a></li>
+</ul></li>
+<li class="chapter" data-level="7.28" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#text-classification"><i class="fa fa-check"></i><b>7.28</b> Text Classification</a></li>
+<li class="chapter" data-level="7.29" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#bayes-classifier-1"><i class="fa fa-check"></i><b>7.29</b> Bayes Classifier</a><ul style="display: none;">
+<li class="chapter" data-level="7.29.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#naive-bayes-in-r"><i class="fa fa-check"></i><b>7.29.1</b> Naive Bayes in R</a></li>
+<li class="chapter" data-level="7.29.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#example-3"><i class="fa fa-check"></i><b>7.29.2</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="7.30" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#support-vector-machines-svm" title="7.30 Support Vector Machines (SVM)"><i class="fa fa-check"></i><b>7.30</b> Support Vector Machines (SVM)</a><ul style="display: none;">
+<li class="chapter" data-level="7.30.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#example-of-svm-with-confusion-matrix"><i class="fa fa-check"></i><b>7.30.1</b> Example of SVM with Confusion Matrix</a></li>
+<li class="chapter" data-level="7.30.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#another-example"><i class="fa fa-check"></i><b>7.30.2</b> Another example</a></li>
+</ul></li>
+<li class="chapter" data-level="7.31" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#word-count-classifiers-adjectives-and-adverbs" title="7.31 Word count classifiers, adjectives, and adverbs"><i class="fa fa-check"></i><b>7.31</b> Word count classifiers, adjectives, and adverbs</a></li>
+<li class="chapter" data-level="7.32" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#fishers-discriminant"><i class="fa fa-check"></i><b>7.32</b> Fisher’s discriminant</a></li>
+<li class="chapter" data-level="7.33" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#vector-distance-classifier"><i class="fa fa-check"></i><b>7.33</b> Vector-Distance Classifier</a></li>
+<li class="chapter" data-level="7.34" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#confusion-matrix"><i class="fa fa-check"></i><b>7.34</b> Confusion matrix</a></li>
+<li class="chapter" data-level="7.35" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#accuracy"><i class="fa fa-check"></i><b>7.35</b> Accuracy</a><ul style="display: none;">
+<li class="chapter" data-level="7.35.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#sentiment-over-time"><i class="fa fa-check"></i><b>7.35.1</b> Sentiment over Time</a></li>
+<li class="chapter" data-level="7.35.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#stock-sentiment-correlations"><i class="fa fa-check"></i><b>7.35.2</b> Stock Sentiment Correlations</a></li>
+<li class="chapter" data-level="7.35.3" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#phase-lag-analysis"><i class="fa fa-check"></i><b>7.35.3</b> Phase Lag Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="7.36" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#false-positives"><i class="fa fa-check"></i><b>7.36</b> False Positives</a></li>
+<li class="chapter" data-level="7.37" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#sentiment-error"><i class="fa fa-check"></i><b>7.37</b> Sentiment Error</a></li>
+<li class="chapter" data-level="7.38" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#disagreement"><i class="fa fa-check"></i><b>7.38</b> Disagreement</a></li>
+<li class="chapter" data-level="7.39" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#precision-and-recall"><i class="fa fa-check"></i><b>7.39</b> Precision and Recall</a></li>
+<li class="chapter" data-level="7.40" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#rtexttools-package"><i class="fa fa-check"></i><b>7.40</b> RTextTools package</a></li>
+<li class="chapter" data-level="7.41" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#grading-text"><i class="fa fa-check"></i><b>7.41</b> Grading Text</a><ul style="display: none;">
+<li class="chapter" data-level="7.41.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#readability"><i class="fa fa-check"></i><b>7.41.1</b> Readability</a></li>
+<li class="chapter" data-level="7.41.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#gunning-fog-index"><i class="fa fa-check"></i><b>7.41.2</b> Gunning-Fog Index</a></li>
+<li class="chapter" data-level="7.41.3" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#the-flesch-kincaid-grade-level"><i class="fa fa-check"></i><b>7.41.3</b> The Flesch-Kincaid Grade Level</a></li>
+</ul></li>
+<li class="chapter" data-level="7.42" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#korpus-package"><i class="fa fa-check"></i><b>7.42</b> koRpus package</a></li>
+<li class="chapter" data-level="7.43" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#text-summarization"><i class="fa fa-check"></i><b>7.43</b> Text Summarization</a><ul style="display: none;">
+<li class="chapter" data-level="7.43.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#jaccard-similarity"><i class="fa fa-check"></i><b>7.43.1</b> Jaccard Similarity</a></li>
+<li class="chapter" data-level="7.43.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#generating-the-summary"><i class="fa fa-check"></i><b>7.43.2</b> Generating the summary</a></li>
+<li class="chapter" data-level="7.43.3" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#example-summarization"><i class="fa fa-check"></i><b>7.43.3</b> Example: Summarization</a></li>
+</ul></li>
+<li class="chapter" data-level="7.44" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#research-in-finance"><i class="fa fa-check"></i><b>7.44</b> Research in Finance</a><ul style="display: none;">
+<li class="chapter" data-level="7.44.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#das-and-chen-management-science-2007"><i class="fa fa-check"></i><b>7.44.1</b> Das and Chen (<em>Management Science</em> 2007)</a></li>
+<li class="chapter" data-level="7.44.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#using-twitter-and-facebook-for-market-prediction"><i class="fa fa-check"></i><b>7.44.2</b> Using Twitter and Facebook for Market Prediction</a></li>
+</ul></li>
+<li class="chapter" data-level="7.45" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#polarity-and-subjectivity"><i class="fa fa-check"></i><b>7.45</b> Polarity and Subjectivity</a><ul style="display: none;">
+<li class="chapter" data-level="7.45.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#text-mining-corporate-reports"><i class="fa fa-check"></i><b>7.45.1</b> Text Mining Corporate Reports</a></li>
+</ul></li>
+<li class="chapter" data-level="7.46" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#tone"><i class="fa fa-check"></i><b>7.46</b> Tone</a><ul style="display: none;">
+<li class="chapter" data-level="7.46.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#mda-usage"><i class="fa fa-check"></i><b>7.46.1</b> MD&amp;A Usage</a></li>
+<li class="chapter" data-level="7.46.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#readability-of-financial-reports"><i class="fa fa-check"></i><b>7.46.2</b> Readability of Financial Reports</a></li>
+<li class="chapter" data-level="7.46.3" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#corporate-finance-and-risk-management"><i class="fa fa-check"></i><b>7.46.3</b> Corporate Finance and Risk Management</a></li>
+<li class="chapter" data-level="7.46.4" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#predicting-markets"><i class="fa fa-check"></i><b>7.46.4</b> Predicting Markets</a></li>
+<li class="chapter" data-level="7.46.5" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#bullishness-index"><i class="fa fa-check"></i><b>7.46.5</b> Bullishness Index</a></li>
+</ul></li>
+<li class="chapter" data-level="7.47" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#commercial-developments"><i class="fa fa-check"></i><b>7.47</b> Commercial Developments</a><ul style="display: none;">
+<li class="chapter" data-level="7.47.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#ibms-midas-system"><i class="fa fa-check"></i><b>7.47.1</b> IBM’s Midas System</a></li>
+<li class="chapter" data-level="7.47.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#stock-twits"><i class="fa fa-check"></i><b>7.47.2</b> Stock Twits</a></li>
+<li class="chapter" data-level="7.47.3" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#isentium"><i class="fa fa-check"></i><b>7.47.3</b> iSentium</a></li>
+<li class="chapter" data-level="7.47.4" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#ravenpack"><i class="fa fa-check"></i><b>7.47.4</b> RavenPack</a></li>
+<li class="chapter" data-level="7.47.5" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#possibile-applications-for-finance-firms"><i class="fa fa-check"></i><b>7.47.5</b> Possibile Applications for Finance Firms</a></li>
+</ul></li>
+<li class="chapter" data-level="7.48" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#latent-semantic-analysis-lsa" title="7.48 Latent Semantic Analysis (LSA)"><i class="fa fa-check"></i><b>7.48</b> Latent Semantic Analysis (LSA)</a><ul style="display: none;">
+<li class="chapter" data-level="7.48.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#how-is-lsa-implemented-using-svd"><i class="fa fa-check"></i><b>7.48.1</b> How is LSA implemented using SVD?</a></li>
+<li class="chapter" data-level="7.48.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#example-4"><i class="fa fa-check"></i><b>7.48.2</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="7.49" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#singular-value-decomposition-svd" title="7.49 Singular Value Decomposition (SVD)"><i class="fa fa-check"></i><b>7.49</b> Singular Value Decomposition (SVD)</a><ul style="display: none;">
+<li class="chapter" data-level="7.49.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#dimension-reduction-of-the-tdm-via-lsa"><i class="fa fa-check"></i><b>7.49.1</b> Dimension reduction of the TDM via LSA</a></li>
+<li class="chapter" data-level="7.49.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#lsa-and-svd-the-connection"><i class="fa fa-check"></i><b>7.49.2</b> LSA and SVD: the connection?</a></li>
+<li class="chapter" data-level="7.49.3" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#what-is-the-rank-of-the-tdm"><i class="fa fa-check"></i><b>7.49.3</b> What is the rank of the TDM?</a></li>
+</ul></li>
+<li class="chapter" data-level="7.50" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#topic-analysis-with-latent-dirichlet-allocation-lda" title="7.50 Topic Analysis with Latent Dirichlet Allocation (LDA)"><i class="fa fa-check"></i><b>7.50</b> Topic Analysis with Latent Dirichlet Allocation (LDA)</a><ul style="display: none;">
+<li class="chapter" data-level="7.50.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#what-does-lda-have-to-do-with-lsa"><i class="fa fa-check"></i><b>7.50.1</b> What does LDA have to do with LSA?</a></li>
+</ul></li>
+<li class="chapter" data-level="7.51" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#lda-explained-briefly"><i class="fa fa-check"></i><b>7.51</b> LDA Explained (Briefly)</a><ul style="display: none;">
+<li class="chapter" data-level="7.51.1" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#matrix-a-connecting-documents-with-topics"><i class="fa fa-check"></i><b>7.51.1</b> Matrix <span class="math inline"><span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-2-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-4" style="width: 0.955em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.777em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.313em, 1000.78em, 2.384em, -999.997em); top: -2.199em; left: 0em;"><span class="mrow" id="MathJax-Span-5"><span class="mi" id="MathJax-Span-6" style="font-family: MathJax_Math-italic;">A</span></span><span style="display: inline-block; width: 0px; height: 2.205em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.068em; border-left: 0px solid; width: 0px; height: 1.004em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi></math></span></span><script type="math/tex" id="MathJax-Element-2">A</script></span>: Connecting Documents with Topics</a></li>
+<li class="chapter" data-level="7.51.2" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#matrix-b-connecting-words-with-topics"><i class="fa fa-check"></i><b>7.51.2</b> Matrix <span class="math inline"><span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-3-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;B&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-7" style="width: 0.955em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.777em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.372em, 1000.78em, 2.384em, -999.997em); top: -2.199em; left: 0em;"><span class="mrow" id="MathJax-Span-8"><span class="mi" id="MathJax-Span-9" style="font-family: MathJax_Math-italic;">B</span></span><span style="display: inline-block; width: 0px; height: 2.205em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.068em; border-left: 0px solid; width: 0px; height: 0.932em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>B</mi></math></span></span><script type="math/tex" id="MathJax-Element-3">B</script></span>: Connecting Words with Topics</a></li>
+<li class="chapter" data-level="7.51.3" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#distribution-of-topics-in-a-document"><i class="fa fa-check"></i><b>7.51.3</b> Distribution of Topics in a Document</a></li>
+<li class="chapter" data-level="7.51.4" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#distribution-of-words-and-topics-for-a-document"><i class="fa fa-check"></i><b>7.51.4</b> Distribution of Words and Topics for a Document</a></li>
+<li class="chapter" data-level="7.51.5" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#likelihood-of-the-entire-corpus"><i class="fa fa-check"></i><b>7.51.5</b> Likelihood of the entire Corpus</a></li>
+<li class="chapter" data-level="7.51.6" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#examples-in-finance"><i class="fa fa-check"></i><b>7.51.6</b> Examples in Finance</a></li>
+<li class="chapter" data-level="7.51.7" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#word2vec-explained"><i class="fa fa-check"></i><b>7.51.7</b> word2vec (explained)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.52" data-path="TextAnalytics.html"><a href="http://srdas.github.io/MLBook/TextAnalytics.html#end-note"><i class="fa fa-check"></i><b>7.52</b> End Note!</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="Text2Vec.html"><a href="http://srdas.github.io/MLBook/Text2Vec.html"><i class="fa fa-check"></i><b>8</b> Much More: Word Embeddings</a><ul>
+<li class="chapter" data-level="8.1" data-path="Text2Vec.html"><a href="http://srdas.github.io/MLBook/Text2Vec.html#word-embeddings-with-text2vec"><i class="fa fa-check"></i><b>8.1</b> Word Embeddings with <em>text2vec</em></a></li>
+<li class="chapter" data-level="8.2" data-path="Text2Vec.html"><a href="http://srdas.github.io/MLBook/Text2Vec.html#how-to-process-data-quickly-using-text2vec" title="8.2 How to process data quickly using text2vec"><i class="fa fa-check"></i><b>8.2</b> How to process data quickly using <em>text2vec</em></a><ul style="display: none;">
+<li class="chapter" data-level="8.2.1" data-path="Text2Vec.html"><a href="http://srdas.github.io/MLBook/Text2Vec.html#read-in-the-provided-data."><i class="fa fa-check"></i><b>8.2.1</b> Read in the provided data.</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="Text2Vec.html"><a href="http://srdas.github.io/MLBook/Text2Vec.html#preprocessing-and-tokenization"><i class="fa fa-check"></i><b>8.3</b> Preprocessing and Tokenization</a></li>
+<li class="chapter" data-level="8.4" data-path="Text2Vec.html"><a href="http://srdas.github.io/MLBook/Text2Vec.html#iterator"><i class="fa fa-check"></i><b>8.4</b> Iterator</a></li>
+<li class="chapter" data-level="8.5" data-path="Text2Vec.html"><a href="http://srdas.github.io/MLBook/Text2Vec.html#vectorize"><i class="fa fa-check"></i><b>8.5</b> Vectorize</a></li>
+<li class="chapter" data-level="8.6" data-path="Text2Vec.html"><a href="http://srdas.github.io/MLBook/Text2Vec.html#document-term-matrix-dtm"><i class="fa fa-check"></i><b>8.6</b> Document Term Matrix (DTM)</a></li>
+<li class="chapter" data-level="8.7" data-path="Text2Vec.html"><a href="http://srdas.github.io/MLBook/Text2Vec.html#n-grams"><i class="fa fa-check"></i><b>8.7</b> N-Grams</a><ul style="display: none;">
+<li class="chapter" data-level="8.7.1" data-path="Text2Vec.html"><a href="http://srdas.github.io/MLBook/Text2Vec.html#redo-classification-with-n-grams."><i class="fa fa-check"></i><b>8.7.1</b> Redo classification with n-grams.</a></li>
+<li class="chapter" data-level="8.7.2" data-path="Text2Vec.html"><a href="http://srdas.github.io/MLBook/Text2Vec.html#out-of-sample-test"><i class="fa fa-check"></i><b>8.7.2</b> Out-of-sample test</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="Text2Vec.html"><a href="http://srdas.github.io/MLBook/Text2Vec.html#tf-idf"><i class="fa fa-check"></i><b>8.8</b> TF-IDF</a></li>
+<li class="chapter" data-level="8.9" data-path="Text2Vec.html"><a href="http://srdas.github.io/MLBook/Text2Vec.html#refit-classifier"><i class="fa fa-check"></i><b>8.9</b> Refit classifier</a></li>
+<li class="chapter" data-level="8.10" data-path="Text2Vec.html"><a href="http://srdas.github.io/MLBook/Text2Vec.html#embeddings-word2vec"><i class="fa fa-check"></i><b>8.10</b> Embeddings (word2vec)</a></li>
+<li class="chapter" data-level="8.11" data-path="Text2Vec.html"><a href="http://srdas.github.io/MLBook/Text2Vec.html#distance-between-words-or-find-close-words" title="8.11 Distance between words (or find close words)"><i class="fa fa-check"></i><b>8.11</b> Distance between words (or find close words)</a></li>
+<li class="chapter" data-level="8.12" data-path="Text2Vec.html"><a href="http://srdas.github.io/MLBook/Text2Vec.html#word2vec-explained-1"><i class="fa fa-check"></i><b>8.12</b> word2vec (explained)</a></li>
+<li class="chapter" data-level="8.13" data-path="Text2Vec.html"><a href="http://srdas.github.io/MLBook/Text2Vec.html#topic-analysis"><i class="fa fa-check"></i><b>8.13</b> Topic Analysis</a></li>
+<li class="chapter" data-level="8.14" data-path="Text2Vec.html"><a href="http://srdas.github.io/MLBook/Text2Vec.html#latent-semantic-analysis-lsa-1" title="8.14 Latent Semantic Analysis (LSA)"><i class="fa fa-check"></i><b>8.14</b> Latent Semantic Analysis (LSA)</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html"><i class="fa fa-check"></i><b>9</b> Making Connections: Networks</a><ul>
+<li class="chapter" data-level="9.1" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#networks-are-beautiful"><i class="fa fa-check"></i><b>9.1</b> Networks are beautiful</a></li>
+<li class="chapter" data-level="9.2" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#small-worlds"><i class="fa fa-check"></i><b>9.2</b> Small Worlds</a></li>
+<li class="chapter" data-level="9.3" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#academic-networks"><i class="fa fa-check"></i><b>9.3</b> Academic Networks</a></li>
+<li class="chapter" data-level="9.4" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#graphs"><i class="fa fa-check"></i><b>9.4</b> Graphs</a><ul style="display: none;">
+<li class="chapter" data-level="9.4.1" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#types-of-graphs"><i class="fa fa-check"></i><b>9.4.1</b> Types of graphs</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#adjacency-matrix"><i class="fa fa-check"></i><b>9.5</b> Adjacency Matrix</a></li>
+<li class="chapter" data-level="9.6" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#igraph-package"><i class="fa fa-check"></i><b>9.6</b> igraph package</a></li>
+<li class="chapter" data-level="9.7" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#graph-attributes"><i class="fa fa-check"></i><b>9.7</b> Graph Attributes</a></li>
+<li class="chapter" data-level="9.8" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#dijkstras-shortest-paths-algorithm" title="9.8 Dijkstra’s Shortest Paths Algorithm"><i class="fa fa-check"></i><b>9.8</b> Dijkstra’s Shortest Paths Algorithm</a></li>
+<li class="chapter" data-level="9.9" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#d3-plots"><i class="fa fa-check"></i><b>9.9</b> D3 plots</a></li>
+<li class="chapter" data-level="9.10" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#centrality"><i class="fa fa-check"></i><b>9.10</b> Centrality</a></li>
+<li class="chapter" data-level="9.11" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#betweenness"><i class="fa fa-check"></i><b>9.11</b> Betweenness</a></li>
+<li class="chapter" data-level="9.12" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#communities"><i class="fa fa-check"></i><b>9.12</b> Communities</a></li>
+<li class="chapter" data-level="9.13" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#financial-applications"><i class="fa fa-check"></i><b>9.13</b> Financial Applications</a></li>
+<li class="chapter" data-level="9.14" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#risk-networks"><i class="fa fa-check"></i><b>9.14</b> Risk Networks</a><ul style="display: none;">
+<li class="chapter" data-level="9.14.1" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#example-5"><i class="fa fa-check"></i><b>9.14.1</b> Example</a></li>
+<li class="chapter" data-level="9.14.2" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#overall-risk-score"><i class="fa fa-check"></i><b>9.14.2</b> Overall Risk Score</a></li>
+<li class="chapter" data-level="9.14.3" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#risk-decomposition"><i class="fa fa-check"></i><b>9.14.3</b> Risk Decomposition</a></li>
+<li class="chapter" data-level="9.14.4" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#centrality-1"><i class="fa fa-check"></i><b>9.14.4</b> Centrality</a></li>
+<li class="chapter" data-level="9.14.5" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#risk-increment"><i class="fa fa-check"></i><b>9.14.5</b> Risk Increment</a></li>
+<li class="chapter" data-level="9.14.6" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#criticality"><i class="fa fa-check"></i><b>9.14.6</b> Criticality</a></li>
+<li class="chapter" data-level="9.14.7" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#cross-risk"><i class="fa fa-check"></i><b>9.14.7</b> Cross Risk</a></li>
+<li class="chapter" data-level="9.14.8" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#risk-scaling-spillovers"><i class="fa fa-check"></i><b>9.14.8</b> Risk Scaling: Spillovers</a></li>
+<li class="chapter" data-level="9.14.9" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#risk-scaling-with-increased-connectivity"><i class="fa fa-check"></i><b>9.14.9</b> Risk Scaling with Increased Connectivity</a></li>
+<li class="chapter" data-level="9.14.10" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#too-big-to-fail"><i class="fa fa-check"></i><b>9.14.10</b> Too Big To Fail</a></li>
+</ul></li>
+<li class="chapter" data-level="9.15" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#systemic-risk-in-indian-banks"><i class="fa fa-check"></i><b>9.15</b> Systemic Risk in Indian Banks</a></li>
+<li class="chapter" data-level="9.16" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#systemic-risk-portals"><i class="fa fa-check"></i><b>9.16</b> Systemic Risk Portals</a></li>
+<li class="chapter" data-level="9.17" data-path="Networks.html"><a href="http://srdas.github.io/MLBook/Networks.html#shiny-application"><i class="fa fa-check"></i><b>9.17</b> Shiny application</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html" title="10 Extracting Dimensions: Discriminant and Factor Analysis"><i class="fa fa-check"></i><b>10</b> Extracting Dimensions: Discriminant and Factor Analysis</a><ul>
+<li class="chapter" data-level="10.1" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#introduction-1"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#discriminant-analysis"><i class="fa fa-check"></i><b>10.2</b> Discriminant Analysis</a></li>
+<li class="chapter" data-level="10.3" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#notation-and-assumptions"><i class="fa fa-check"></i><b>10.3</b> Notation and assumptions</a></li>
+<li class="chapter" data-level="10.4" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#discriminant-function"><i class="fa fa-check"></i><b>10.4</b> Discriminant Function</a></li>
+<li class="chapter" data-level="10.5" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#how-good-is-the-discriminant-function" title="10.5 How good is the discriminant function?"><i class="fa fa-check"></i><b>10.5</b> How good is the discriminant function?</a></li>
+<li class="chapter" data-level="10.6" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#confusion-matrix-1"><i class="fa fa-check"></i><b>10.6</b> Confusion Matrix</a><ul style="display: none;">
+<li class="chapter" data-level="10.6.1" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#example-using-basketball-data"><i class="fa fa-check"></i><b>10.6.1</b> Example Using Basketball Data</a></li>
+<li class="chapter" data-level="10.6.2" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#confusion-matrix-2"><i class="fa fa-check"></i><b>10.6.2</b> Confusion Matrix</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#explanation-of-lda"><i class="fa fa-check"></i><b>10.7</b> Explanation of LDA</a></li>
+<li class="chapter" data-level="10.8" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#fischers-discriminant"><i class="fa fa-check"></i><b>10.8</b> Fischer’s Discriminant</a></li>
+<li class="chapter" data-level="10.9" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#generalizing-number-of-groups"><i class="fa fa-check"></i><b>10.9</b> Generalizing number of groups</a></li>
+<li class="chapter" data-level="10.10" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#eigen-systems"><i class="fa fa-check"></i><b>10.10</b> Eigen Systems</a><ul style="display: none;">
+<li class="chapter" data-level="10.10.1" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#intuition"><i class="fa fa-check"></i><b>10.10.1</b> Intuition</a></li>
+</ul></li>
+<li class="chapter" data-level="10.11" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#determinants"><i class="fa fa-check"></i><b>10.11</b> Determinants</a></li>
+<li class="chapter" data-level="10.12" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#dimension-reduction-factor-analysis-and-pca" title="10.12 Dimension Reduction: Factor Analysis and PCA"><i class="fa fa-check"></i><b>10.12</b> Dimension Reduction: Factor Analysis and PCA</a><ul style="display: none;">
+<li class="chapter" data-level="10.12.1" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#notation"><i class="fa fa-check"></i><b>10.12.1</b> Notation</a></li>
+<li class="chapter" data-level="10.12.2" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#the-idea"><i class="fa fa-check"></i><b>10.12.2</b> The Idea</a></li>
+</ul></li>
+<li class="chapter" data-level="10.13" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#principal-components-analysis-pca" title="10.13 Principal Components Analysis (PCA)"><i class="fa fa-check"></i><b>10.13</b> Principal Components Analysis (PCA)</a><ul style="display: none;">
+<li class="chapter" data-level="10.13.1" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#difference-between-pca-and-lda"><i class="fa fa-check"></i><b>10.13.1</b> Difference between PCA and LDA</a></li>
+<li class="chapter" data-level="10.13.2" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#application-to-treasury-yield-curves"><i class="fa fa-check"></i><b>10.13.2</b> Application to Treasury Yield Curves</a></li>
+<li class="chapter" data-level="10.13.3" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#results"><i class="fa fa-check"></i><b>10.13.3</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="10.14" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#difference-between-pca-and-fa" title="10.14 Difference between PCA and FA"><i class="fa fa-check"></i><b>10.14</b> Difference between PCA and FA</a></li>
+<li class="chapter" data-level="10.15" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#factor-rotation"><i class="fa fa-check"></i><b>10.15</b> Factor Rotation</a><ul style="display: none;">
+<li class="chapter" data-level="10.15.1" data-path="DiscriminantFactorAnalysis.html"><a href="http://srdas.github.io/MLBook/DiscriminantFactorAnalysis.html#using-the-factor-analysis-function"><i class="fa fa-check"></i><b>10.15.1</b> Using the factor analysis function</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html" title="11 Truncate and Estimate: Limited Dependent Variables"><i class="fa fa-check"></i><b>11</b> Truncate and Estimate: Limited Dependent Variables</a><ul>
+<li class="chapter" data-level="11.1" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#maximum-likelihood-estimation-mle" title="11.1 Maximum-Likelihood Estimation (MLE)"><i class="fa fa-check"></i><b>11.1</b> Maximum-Likelihood Estimation (MLE)</a></li>
+<li class="chapter" data-level="11.2" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#implementation"><i class="fa fa-check"></i><b>11.2</b> Implementation</a></li>
+<li class="chapter" data-level="11.3" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#logit-and-probit-models"><i class="fa fa-check"></i><b>11.3</b> Logit and Probit Models</a></li>
+<li class="chapter" data-level="11.4" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#logit-1"><i class="fa fa-check"></i><b>11.4</b> Logit</a><ul style="display: none;">
+<li class="chapter" data-level="11.4.1" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#example-6"><i class="fa fa-check"></i><b>11.4.1</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#probit-1"><i class="fa fa-check"></i><b>11.5</b> Probit</a></li>
+<li class="chapter" data-level="11.6" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#analysis"><i class="fa fa-check"></i><b>11.6</b> Analysis</a></li>
+<li class="chapter" data-level="11.7" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#odds-ratio-and-slopes-coefficients-in-a-logit" title="11.7 Odds Ratio and Slopes (Coefficients) in a Logit"><i class="fa fa-check"></i><b>11.7</b> Odds Ratio and Slopes (Coefficients) in a Logit</a></li>
+<li class="chapter" data-level="11.8" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#calculus-of-the-logit-coefficients" title="11.8 Calculus of the logit coefficients"><i class="fa fa-check"></i><b>11.8</b> Calculus of the logit coefficients</a><ul style="display: none;">
+<li class="chapter" data-level="11.8.1" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#how-about-the-probit-model"><i class="fa fa-check"></i><b>11.8.1</b> How about the Probit model?</a></li>
+</ul></li>
+<li class="chapter" data-level="11.9" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#maximum-likelihood-estimation-mle-of-these-choice-models" title="11.9 Maximum-Likelihood Estimation (MLE) of these Choice Models"><i class="fa fa-check"></i><b>11.9</b> Maximum-Likelihood Estimation (MLE) of these Choice Models</a></li>
+<li class="chapter" data-level="11.10" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#multinomial-logit"><i class="fa fa-check"></i><b>11.10</b> Multinomial Logit</a></li>
+<li class="chapter" data-level="11.11" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#when-ols-fails"><i class="fa fa-check"></i><b>11.11</b> When OLS fails</a></li>
+<li class="chapter" data-level="11.12" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#truncated-variables-and-sample-selection" title="11.12 Truncated Variables and Sample Selection"><i class="fa fa-check"></i><b>11.12</b> Truncated Variables and Sample Selection</a></li>
+<li class="chapter" data-level="11.13" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#inverse-mills-ratio"><i class="fa fa-check"></i><b>11.13</b> Inverse Mills Ratio</a><ul style="display: none;">
+<li class="chapter" data-level="11.13.1" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#example-limited-dependent-variables-in-vc-syndications"><i class="fa fa-check"></i><b>11.13.1</b> Example: Limited Dependent Variables in VC Syndications</a></li>
+</ul></li>
+<li class="chapter" data-level="11.14" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#sample-selection-problems-and-endogeneity" title="11.14 Sample Selection Problems (and endogeneity)"><i class="fa fa-check"></i><b>11.14</b> Sample Selection Problems (and endogeneity)</a><ul style="display: none;">
+<li class="chapter" data-level="11.14.1" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#example-women-in-the-labor-market"><i class="fa fa-check"></i><b>11.14.1</b> Example: Women in the Labor Market</a></li>
+</ul></li>
+<li class="chapter" data-level="11.15" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#endogeity-some-theory-to-wrap-up" title="11.15 Endogeity: Some Theory to Wrap Up"><i class="fa fa-check"></i><b>11.15</b> Endogeity: Some Theory to Wrap Up</a></li>
+<li class="chapter" data-level="11.16" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#cox-proportional-hazards-model" title="11.16 Cox Proportional Hazards Model"><i class="fa fa-check"></i><b>11.16</b> Cox Proportional Hazards Model</a></li>
+<li class="chapter" data-level="11.17" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#glmnet-lasso-and-ridge-regressions" title="11.17 GLMNET: Lasso and Ridge Regressions"><i class="fa fa-check"></i><b>11.17</b> GLMNET: Lasso and Ridge Regressions</a><ul style="display: none;">
+<li class="chapter" data-level="11.17.1" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#prediction-on-test-data"><i class="fa fa-check"></i><b>11.17.1</b> Prediction on test data</a></li>
+</ul></li>
+<li class="chapter" data-level="11.18" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#roc-curves"><i class="fa fa-check"></i><b>11.18</b> ROC Curves</a></li>
+<li class="chapter" data-level="11.19" data-path="LimitedDependentVariables.html"><a href="http://srdas.github.io/MLBook/LimitedDependentVariables.html#glmnet-cox-models"><i class="fa fa-check"></i><b>11.19</b> Glmnet Cox Models</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="ClusterAnalysis.html"><a href="http://srdas.github.io/MLBook/ClusterAnalysis.html" title="12 In the Same Boat: Cluster Analysis and Prediction Trees"><i class="fa fa-check"></i><b>12</b> In the Same Boat: Cluster Analysis and Prediction Trees</a><ul>
+<li class="chapter" data-level="12.1" data-path="ClusterAnalysis.html"><a href="http://srdas.github.io/MLBook/ClusterAnalysis.html#overview"><i class="fa fa-check"></i><b>12.1</b> Overview</a></li>
+<li class="chapter" data-level="12.2" data-path="ClusterAnalysis.html"><a href="http://srdas.github.io/MLBook/ClusterAnalysis.html#k-means"><i class="fa fa-check"></i><b>12.2</b> k-MEANS</a><ul style="display: none;">
+<li class="chapter" data-level="12.2.1" data-path="ClusterAnalysis.html"><a href="http://srdas.github.io/MLBook/ClusterAnalysis.html#example-randomly-generated-data-in-k-means"><i class="fa fa-check"></i><b>12.2.1</b> Example: Randomly generated data in k-means</a></li>
+<li class="chapter" data-level="12.2.2" data-path="ClusterAnalysis.html"><a href="http://srdas.github.io/MLBook/ClusterAnalysis.html#example-ncaa-teams"><i class="fa fa-check"></i><b>12.2.2</b> Example: NCAA teams</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="ClusterAnalysis.html"><a href="http://srdas.github.io/MLBook/ClusterAnalysis.html#hierarchical-clustering"><i class="fa fa-check"></i><b>12.3</b> Hierarchical Clustering</a></li>
+<li class="chapter" data-level="12.4" data-path="ClusterAnalysis.html"><a href="http://srdas.github.io/MLBook/ClusterAnalysis.html#k-nearest-neighbors"><i class="fa fa-check"></i><b>12.4</b> k Nearest Neighbors</a></li>
+<li class="chapter" data-level="12.5" data-path="ClusterAnalysis.html"><a href="http://srdas.github.io/MLBook/ClusterAnalysis.html#prediction-trees"><i class="fa fa-check"></i><b>12.5</b> Prediction Trees</a><ul style="display: none;">
+<li class="chapter" data-level="12.5.1" data-path="ClusterAnalysis.html"><a href="http://srdas.github.io/MLBook/ClusterAnalysis.html#fitting-the-tree"><i class="fa fa-check"></i><b>12.5.1</b> Fitting the tree</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="ClusterAnalysis.html"><a href="http://srdas.github.io/MLBook/ClusterAnalysis.html#classification-trees"><i class="fa fa-check"></i><b>12.6</b> Classification Trees</a></li>
+<li class="chapter" data-level="12.7" data-path="ClusterAnalysis.html"><a href="http://srdas.github.io/MLBook/ClusterAnalysis.html#c4.5-classifier"><i class="fa fa-check"></i><b>12.7</b> C4.5 Classifier</a></li>
+<li class="chapter" data-level="12.8" data-path="ClusterAnalysis.html"><a href="http://srdas.github.io/MLBook/ClusterAnalysis.html#regression-trees"><i class="fa fa-check"></i><b>12.8</b> Regression Trees</a><ul style="display: none;">
+<li class="chapter" data-level="12.8.1" data-path="ClusterAnalysis.html"><a href="http://srdas.github.io/MLBook/ClusterAnalysis.html#example-califonia-home-data"><i class="fa fa-check"></i><b>12.8.1</b> Example: Califonia Home Data</a></li>
+</ul></li>
+<li class="chapter" data-level="12.9" data-path="ClusterAnalysis.html"><a href="http://srdas.github.io/MLBook/ClusterAnalysis.html#random-forests"><i class="fa fa-check"></i><b>12.9</b> Random Forests</a></li>
+<li class="chapter" data-level="12.10" data-path="ClusterAnalysis.html"><a href="http://srdas.github.io/MLBook/ClusterAnalysis.html#top-ten-algorithms-in-data-science" title="12.10 Top Ten Algorithms in Data Science"><i class="fa fa-check"></i><b>12.10</b> Top Ten Algorithms in Data Science</a></li>
+<li class="chapter" data-level="12.11" data-path="ClusterAnalysis.html"><a href="http://srdas.github.io/MLBook/ClusterAnalysis.html#boosting"><i class="fa fa-check"></i><b>12.11</b> Boosting</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html"><i class="fa fa-check"></i><b>13</b> Statistical Brains: Neural Networks</a><ul>
+<li class="chapter" data-level="13.1" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#overview-1"><i class="fa fa-check"></i><b>13.1</b> Overview</a></li>
+<li class="chapter" data-level="13.2" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#perceptrons"><i class="fa fa-check"></i><b>13.2</b> Perceptrons</a></li>
+<li class="chapter" data-level="13.3" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#deep-learning"><i class="fa fa-check"></i><b>13.3</b> Deep Learning</a></li>
+<li class="chapter" data-level="13.4" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#binary-nns"><i class="fa fa-check"></i><b>13.4</b> Binary NNs</a></li>
+<li class="chapter" data-level="13.5" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#squashing-functions"><i class="fa fa-check"></i><b>13.5</b> Squashing Functions</a></li>
+<li class="chapter" data-level="13.6" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#how-does-the-nn-work"><i class="fa fa-check"></i><b>13.6</b> How does the NN work?</a></li>
+<li class="chapter" data-level="13.7" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#relationship-to-logitprobit-models" title="13.7 Relationship to Logit/Probit Models"><i class="fa fa-check"></i><b>13.7</b> Relationship to Logit/Probit Models</a></li>
+<li class="chapter" data-level="13.8" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#connection-to-hyperplanes"><i class="fa fa-check"></i><b>13.8</b> Connection to hyperplanes</a></li>
+<li class="chapter" data-level="13.9" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#gradient-descent"><i class="fa fa-check"></i><b>13.9</b> Gradient Descent</a></li>
+<li class="chapter" data-level="13.10" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#feedback-and-backpropagation" title="13.10 Feedback and Backpropagation"><i class="fa fa-check"></i><b>13.10</b> Feedback and Backpropagation</a></li>
+<li class="chapter" data-level="13.11" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#backpropagation"><i class="fa fa-check"></i><b>13.11</b> Backpropagation</a><ul style="display: none;">
+<li class="chapter" data-level="13.11.1" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#extension-to-many-observations"><i class="fa fa-check"></i><b>13.11.1</b> Extension to many observations</a></li>
+</ul></li>
+<li class="chapter" data-level="13.12" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#backprop-detailed-analysis"><i class="fa fa-check"></i><b>13.12</b> Backprop: Detailed Analysis</a><ul style="display: none;">
+<li class="chapter" data-level="13.12.1" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#net-input"><i class="fa fa-check"></i><b>13.12.1</b> Net Input</a></li>
+<li class="chapter" data-level="13.12.2" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#activation-function"><i class="fa fa-check"></i><b>13.12.2</b> Activation Function</a></li>
+<li class="chapter" data-level="13.12.3" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#loss-function"><i class="fa fa-check"></i><b>13.12.3</b> Loss Function</a></li>
+<li class="chapter" data-level="13.12.4" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#gradients"><i class="fa fa-check"></i><b>13.12.4</b> Gradients</a></li>
+<li class="chapter" data-level="13.12.5" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#delta-values"><i class="fa fa-check"></i><b>13.12.5</b> Delta Values</a></li>
+<li class="chapter" data-level="13.12.6" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#output-layer"><i class="fa fa-check"></i><b>13.12.6</b> Output layer</a></li>
+<li class="chapter" data-level="13.12.7" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#feedforward-and-backward-propagation"><i class="fa fa-check"></i><b>13.12.7</b> Feedforward and Backward Propagation</a></li>
+</ul></li>
+<li class="chapter" data-level="13.13" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#research-applications"><i class="fa fa-check"></i><b>13.13</b> Research Applications</a></li>
+<li class="chapter" data-level="13.14" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#package-neuralnet-in-r"><i class="fa fa-check"></i><b>13.14</b> Package <em>neuralnet</em> in R</a><ul style="display: none;">
+<li class="chapter" data-level="13.14.1" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#first-step-fit-a-logit-model-to-the-data."><i class="fa fa-check"></i><b>13.14.1</b> First step, fit a logit model to the data.</a></li>
+<li class="chapter" data-level="13.14.2" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#second-step-fit-a-nn"><i class="fa fa-check"></i><b>13.14.2</b> Second step, fit a NN</a></li>
+<li class="chapter" data-level="13.14.3" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#logit-vs-nn"><i class="fa fa-check"></i><b>13.14.3</b> Logit vs NN</a></li>
+<li class="chapter" data-level="13.14.4" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#backpropagation-option"><i class="fa fa-check"></i><b>13.14.4</b> Backpropagation option</a></li>
+</ul></li>
+<li class="chapter" data-level="13.15" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#statistical-significance"><i class="fa fa-check"></i><b>13.15</b> Statistical Significance</a></li>
+<li class="chapter" data-level="13.16" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#deep-learning-overview"><i class="fa fa-check"></i><b>13.16</b> Deep Learning Overview</a><ul style="display: none;">
+<li class="chapter" data-level="13.16.1" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#grab-some-data"><i class="fa fa-check"></i><b>13.16.1</b> Grab Some Data</a></li>
+<li class="chapter" data-level="13.16.2" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#simple-example"><i class="fa fa-check"></i><b>13.16.2</b> Simple Example</a></li>
+<li class="chapter" data-level="13.16.3" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#prediction"><i class="fa fa-check"></i><b>13.16.3</b> Prediction</a></li>
+<li class="chapter" data-level="13.16.4" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#test-predictive-ability-of-the-model"><i class="fa fa-check"></i><b>13.16.4</b> Test Predictive Ability of the Model</a></li>
+<li class="chapter" data-level="13.16.5" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#prediction-error"><i class="fa fa-check"></i><b>13.16.5</b> Prediction Error</a></li>
+</ul></li>
+<li class="chapter" data-level="13.17" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#cancer-dataset"><i class="fa fa-check"></i><b>13.17</b> Cancer dataset</a><ul style="display: none;">
+<li class="chapter" data-level="13.17.1" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#compare-to-a-simple-nn"><i class="fa fa-check"></i><b>13.17.1</b> Compare to a simple NN</a></li>
+</ul></li>
+<li class="chapter" data-level="13.18" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#deeper-net-more-hidden-layers" title="13.18 Deeper Net: More Hidden Layers"><i class="fa fa-check"></i><b>13.18</b> Deeper Net: More Hidden Layers</a></li>
+<li class="chapter" data-level="13.19" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#using-h2o"><i class="fa fa-check"></i><b>13.19</b> Using h2o</a></li>
+<li class="chapter" data-level="13.20" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#character-recognition"><i class="fa fa-check"></i><b>13.20</b> Character Recognition</a></li>
+<li class="chapter" data-level="13.21" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#mxnet-package"><i class="fa fa-check"></i><b>13.21</b> MxNet Package</a><ul style="display: none;">
+<li class="chapter" data-level="13.21.1" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#cancer-data"><i class="fa fa-check"></i><b>13.21.1</b> Cancer Data</a></li>
+</ul></li>
+<li class="chapter" data-level="13.22" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#convolutional-neural-nets-cnns" title="13.22 Convolutional Neural Nets (CNNs)"><i class="fa fa-check"></i><b>13.22</b> Convolutional Neural Nets (CNNs)</a></li>
+<li class="chapter" data-level="13.23" data-path="NeuralNetsDeepLearning.html"><a href="http://srdas.github.io/MLBook/NeuralNetsDeepLearning.html#recurrent-neural-nets-rnns" title="13.23 Recurrent Neural Nets (RNNs)"><i class="fa fa-check"></i><b>13.23</b> Recurrent Neural Nets (RNNs)</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="Recommenders.html"><a href="http://srdas.github.io/MLBook/Recommenders.html" title="14 The Machine Knows What You Want: Recommender Systems"><i class="fa fa-check"></i><b>14</b> The Machine Knows What You Want: Recommender Systems</a><ul>
+<li class="chapter" data-level="14.1" data-path="Recommenders.html"><a href="http://srdas.github.io/MLBook/Recommenders.html#introduction-2"><i class="fa fa-check"></i><b>14.1</b> Introduction</a></li>
+<li class="chapter" data-level="14.2" data-path="Recommenders.html"><a href="http://srdas.github.io/MLBook/Recommenders.html#alternating-least-squares"><i class="fa fa-check"></i><b>14.2</b> Alternating Least Squares</a></li>
+<li class="chapter" data-level="14.3" data-path="Recommenders.html"><a href="http://srdas.github.io/MLBook/Recommenders.html#solve-u-matrix"><i class="fa fa-check"></i><b>14.3</b> Solve <span class="math inline"><span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-4-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-10" style="width: 0.717em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.598em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.61em, 1000.6em, 2.384em, -999.997em); top: -2.199em; left: 0em;"><span class="mrow" id="MathJax-Span-11"><span class="mi" id="MathJax-Span-12" style="font-family: MathJax_Math-italic;">u</span></span><span style="display: inline-block; width: 0px; height: 2.205em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.068em; border-left: 0px solid; width: 0px; height: 0.718em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>u</mi></math></span></span><script type="math/tex" id="MathJax-Element-4">u</script></span> matrix</a></li>
+<li class="chapter" data-level="14.4" data-path="Recommenders.html"><a href="http://srdas.github.io/MLBook/Recommenders.html#solve-m-matrix"><i class="fa fa-check"></i><b>14.4</b> Solve <span class="math inline"><span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-5-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-13" style="width: 1.074em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.896em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.61em, 1000.9em, 2.384em, -999.997em); top: -2.199em; left: 0em;"><span class="mrow" id="MathJax-Span-14"><span class="mi" id="MathJax-Span-15" style="font-family: MathJax_Math-italic;">m</span></span><span style="display: inline-block; width: 0px; height: 2.205em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.068em; border-left: 0px solid; width: 0px; height: 0.718em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>m</mi></math></span></span><script type="math/tex" id="MathJax-Element-5">m</script></span> matrix</a></li>
+<li class="chapter" data-level="14.5" data-path="Recommenders.html"><a href="http://srdas.github.io/MLBook/Recommenders.html#als-package"><i class="fa fa-check"></i><b>14.5</b> ALS package</a></li>
+<li class="chapter" data-level="14.6" data-path="Recommenders.html"><a href="http://srdas.github.io/MLBook/Recommenders.html#interpretation-and-use"><i class="fa fa-check"></i><b>14.6</b> Interpretation and Use</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="productForecastingBassModel.html"><a href="http://srdas.github.io/MLBook/productForecastingBassModel.html" title="15 Product Market Forecasting using the Bass Model"><i class="fa fa-check"></i><b>15</b> Product Market Forecasting using the Bass Model</a><ul>
+<li class="chapter" data-level="15.1" data-path="productForecastingBassModel.html"><a href="http://srdas.github.io/MLBook/productForecastingBassModel.html#main-ideas"><i class="fa fa-check"></i><b>15.1</b> Main Ideas</a></li>
+<li class="chapter" data-level="15.2" data-path="productForecastingBassModel.html"><a href="http://srdas.github.io/MLBook/productForecastingBassModel.html#historical-examples"><i class="fa fa-check"></i><b>15.2</b> Historical Examples</a></li>
+<li class="chapter" data-level="15.3" data-path="productForecastingBassModel.html"><a href="http://srdas.github.io/MLBook/productForecastingBassModel.html#the-basic-idea"><i class="fa fa-check"></i><b>15.3</b> The Basic Idea</a></li>
+<li class="chapter" data-level="15.4" data-path="productForecastingBassModel.html"><a href="http://srdas.github.io/MLBook/productForecastingBassModel.html#main-differential-equation"><i class="fa fa-check"></i><b>15.4</b> Main Differential Equation</a></li>
+<li class="chapter" data-level="15.5" data-path="productForecastingBassModel.html"><a href="http://srdas.github.io/MLBook/productForecastingBassModel.html#solving-the-model-for-ft"><i class="fa fa-check"></i><b>15.5</b> Solving the Model for <span class="math inline"><span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-6-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;F&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-16" style="width: 2.324em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.908em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.253em, 1001.79em, 2.622em, -999.997em); top: -2.199em; left: 0em;"><span class="mrow" id="MathJax-Span-17"><span class="mi" id="MathJax-Span-18" style="font-family: MathJax_Math-italic;">F<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.122em;"></span></span><span class="mo" id="MathJax-Span-19" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-20" style="font-family: MathJax_Math-italic;">t</span><span class="mo" id="MathJax-Span-21" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.205em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.354em; border-left: 0px solid; width: 0px; height: 1.361em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>F</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-6">F(t)</script></span></a></li>
+<li class="chapter" data-level="15.6" data-path="productForecastingBassModel.html"><a href="http://srdas.github.io/MLBook/productForecastingBassModel.html#another-solution"><i class="fa fa-check"></i><b>15.6</b> Another solution</a></li>
+<li class="chapter" data-level="15.7" data-path="productForecastingBassModel.html"><a href="http://srdas.github.io/MLBook/productForecastingBassModel.html#solve-for-ft"><i class="fa fa-check"></i><b>15.7</b> Solve for <span class="math inline"><span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-7-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;f&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-22" style="width: 2.027em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.67em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.253em, 1001.55em, 2.622em, -999.997em); top: -2.199em; left: 0em;"><span class="mrow" id="MathJax-Span-23"><span class="mi" id="MathJax-Span-24" style="font-family: MathJax_Math-italic;">f<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.063em;"></span></span><span class="mo" id="MathJax-Span-25" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-26" style="font-family: MathJax_Math-italic;">t</span><span class="mo" id="MathJax-Span-27" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.205em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.354em; border-left: 0px solid; width: 0px; height: 1.361em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-7">f(t)</script></span></a></li>
+<li class="chapter" data-level="15.8" data-path="productForecastingBassModel.html"><a href="http://srdas.github.io/MLBook/productForecastingBassModel.html#example-7"><i class="fa fa-check"></i><b>15.8</b> Example</a></li>
+<li class="chapter" data-level="15.9" data-path="productForecastingBassModel.html"><a href="http://srdas.github.io/MLBook/productForecastingBassModel.html#symbolic-math-in-r"><i class="fa fa-check"></i><b>15.9</b> Symbolic Math in R</a></li>
+<li class="chapter" data-level="15.10" data-path="productForecastingBassModel.html"><a href="http://srdas.github.io/MLBook/productForecastingBassModel.html#solution-using-wolfram-alpha"><i class="fa fa-check"></i><b>15.10</b> Solution using Wolfram Alpha</a></li>
+<li class="chapter" data-level="15.11" data-path="productForecastingBassModel.html"><a href="http://srdas.github.io/MLBook/productForecastingBassModel.html#calibration"><i class="fa fa-check"></i><b>15.11</b> Calibration</a></li>
+<li class="chapter" data-level="15.12" data-path="productForecastingBassModel.html"><a href="http://srdas.github.io/MLBook/productForecastingBassModel.html#iphone-sales-forecast"><i class="fa fa-check"></i><b>15.12</b> iPhone Sales Forecast</a></li>
+<li class="chapter" data-level="15.13" data-path="productForecastingBassModel.html"><a href="http://srdas.github.io/MLBook/productForecastingBassModel.html#comparison-to-other-products"><i class="fa fa-check"></i><b>15.13</b> Comparison to other products</a></li>
+<li class="chapter" data-level="15.14" data-path="productForecastingBassModel.html"><a href="http://srdas.github.io/MLBook/productForecastingBassModel.html#sales-peak"><i class="fa fa-check"></i><b>15.14</b> Sales Peak</a></li>
+<li class="chapter" data-level="15.15" data-path="productForecastingBassModel.html"><a href="http://srdas.github.io/MLBook/productForecastingBassModel.html#samsung-galaxy-phone-sales" title="15.15 Samsung Galaxy Phone Sales"><i class="fa fa-check"></i><b>15.15</b> Samsung Galaxy Phone Sales</a></li>
+<li class="chapter" data-level="15.16" data-path="productForecastingBassModel.html"><a href="http://srdas.github.io/MLBook/productForecastingBassModel.html#global-semiconductor-sales"><i class="fa fa-check"></i><b>15.16</b> Global Semiconductor Sales</a></li>
+<li class="chapter" data-level="15.17" data-path="productForecastingBassModel.html"><a href="http://srdas.github.io/MLBook/productForecastingBassModel.html#extensions"><i class="fa fa-check"></i><b>15.17</b> Extensions</a></li>
+<li class="chapter" data-level="15.18" data-path="productForecastingBassModel.html"><a href="http://srdas.github.io/MLBook/productForecastingBassModel.html#trading-off-p-vs-q"><i class="fa fa-check"></i><b>15.18</b> Trading off <span class="math inline"><span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-8-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-28" style="width: 0.598em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.479em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.61em, 1000.48em, 2.562em, -999.997em); top: -2.199em; left: 0em;"><span class="mrow" id="MathJax-Span-29"><span class="mi" id="MathJax-Span-30" style="font-family: MathJax_Math-italic;">p</span></span><span style="display: inline-block; width: 0px; height: 2.205em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.282em; border-left: 0px solid; width: 0px; height: 0.932em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>p</mi></math></span></span><script type="math/tex" id="MathJax-Element-8">p</script></span> vs <span class="math inline"><span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-9-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;q&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-31" style="width: 0.598em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.479em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.61em, 1000.48em, 2.562em, -999.997em); top: -2.199em; left: 0em;"><span class="mrow" id="MathJax-Span-32"><span class="mi" id="MathJax-Span-33" style="font-family: MathJax_Math-italic;">q<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.205em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.282em; border-left: 0px solid; width: 0px; height: 0.932em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>q</mi></math></span></span><script type="math/tex" id="MathJax-Element-9">q</script></span></a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html"><i class="fa fa-check"></i><b>16</b> Riding the Wave: Fourier Analysis</a><ul>
+<li class="chapter" data-level="16.1" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html#introduction-3"><i class="fa fa-check"></i><b>16.1</b> Introduction</a></li>
+<li class="chapter" data-level="16.2" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html#fourier-series"><i class="fa fa-check"></i><b>16.2</b> Fourier Series</a><ul style="display: none;">
+<li class="chapter" data-level="16.2.1" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html#basic-stuff"><i class="fa fa-check"></i><b>16.2.1</b> Basic stuff</a></li>
+<li class="chapter" data-level="16.2.2" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html#unit-circle"><i class="fa fa-check"></i><b>16.2.2</b> Unit Circle</a></li>
+<li class="chapter" data-level="16.2.3" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html#angular-velocity"><i class="fa fa-check"></i><b>16.2.3</b> Angular velocity</a></li>
+<li class="chapter" data-level="16.2.4" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html#fourier-series-1"><i class="fa fa-check"></i><b>16.2.4</b> Fourier series</a></li>
+<li class="chapter" data-level="16.2.5" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html#radians"><i class="fa fa-check"></i><b>16.2.5</b> Radians</a></li>
+<li class="chapter" data-level="16.2.6" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html#solving-for-the-coefficients"><i class="fa fa-check"></i><b>16.2.6</b> Solving for the coefficients</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html#complex-algebra"><i class="fa fa-check"></i><b>16.3</b> Complex Algebra</a><ul style="display: none;">
+<li class="chapter" data-level="16.3.1" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html#trig-to-complex"><i class="fa fa-check"></i><b>16.3.1</b> Trig to Complex</a></li>
+<li class="chapter" data-level="16.3.2" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html#getting-rid-of-a_0"><i class="fa fa-check"></i><b>16.3.2</b> Getting rid of <span class="math inline"><span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-10-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/msub&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-34" style="width: 1.193em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.955em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.61em, 1000.96em, 2.562em, -999.997em); top: -2.199em; left: 0em;"><span class="mrow" id="MathJax-Span-35"><span class="msubsup" id="MathJax-Span-36"><span style="display: inline-block; position: relative; width: 0.955em; height: 0px;"><span style="position: absolute; clip: rect(3.396em, 1000.54em, 4.17em, -999.997em); top: -3.985em; left: 0em;"><span class="mi" id="MathJax-Span-37" style="font-family: MathJax_Math-italic;">a</span><span style="display: inline-block; width: 0px; height: 3.991em;"></span></span><span style="position: absolute; top: -3.807em; left: 0.539em;"><span class="mn" id="MathJax-Span-38" style="font-size: 70.7%; font-family: MathJax_Main;">0</span><span style="display: inline-block; width: 0px; height: 3.991em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.205em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.282em; border-left: 0px solid; width: 0px; height: 0.861em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>a</mi><mn>0</mn></msub></math></span></span><script type="math/tex" id="MathJax-Element-10">a_0</script></span></a></li>
+<li class="chapter" data-level="16.3.3" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html#collapsing-and-simplifying"><i class="fa fa-check"></i><b>16.3.3</b> Collapsing and Simplifying</a></li>
+</ul></li>
+<li class="chapter" data-level="16.4" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html#fourier-transform"><i class="fa fa-check"></i><b>16.4</b> Fourier Transform</a><ul style="display: none;">
+<li class="chapter" data-level="16.4.1" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html#empirical-example"><i class="fa fa-check"></i><b>16.4.1</b> Empirical Example</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html#application-to-binomial-option-pricing" title="16.5 Application to Binomial Option Pricing"><i class="fa fa-check"></i><b>16.5</b> Application to Binomial Option Pricing</a></li>
+<li class="chapter" data-level="16.6" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html#application-to-probability-functions" title="16.6 Application to probability functions"><i class="fa fa-check"></i><b>16.6</b> Application to probability functions</a><ul style="display: none;">
+<li class="chapter" data-level="16.6.1" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html#characteristic-functions"><i class="fa fa-check"></i><b>16.6.1</b> Characteristic functions</a></li>
+<li class="chapter" data-level="16.6.2" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html#finance-application"><i class="fa fa-check"></i><b>16.6.2</b> Finance application</a></li>
+<li class="chapter" data-level="16.6.3" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html#solving-for-the-characteristic-function"><i class="fa fa-check"></i><b>16.6.3</b> Solving for the characteristic function</a></li>
+<li class="chapter" data-level="16.6.4" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html#computing-the-moments"><i class="fa fa-check"></i><b>16.6.4</b> Computing the moments</a></li>
+<li class="chapter" data-level="16.6.5" data-path="Fourier.html"><a href="http://srdas.github.io/MLBook/Fourier.html#probability-density-function"><i class="fa fa-check"></i><b>16.6.5</b> Probability density function</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="FinanceModels.html"><a href="http://srdas.github.io/MLBook/FinanceModels.html"><i class="fa fa-check"></i><b>17</b> Finance Models</a><ul>
+<li class="chapter" data-level="17.1" data-path="FinanceModels.html"><a href="http://srdas.github.io/MLBook/FinanceModels.html#brownian-motions-quick-introduction" title="17.1 Brownian Motions: Quick Introduction"><i class="fa fa-check"></i><b>17.1</b> Brownian Motions: Quick Introduction</a></li>
+<li class="chapter" data-level="17.2" data-path="FinanceModels.html"><a href="http://srdas.github.io/MLBook/FinanceModels.html#monte-carlo-simulation"><i class="fa fa-check"></i><b>17.2</b> Monte Carlo Simulation</a></li>
+<li class="chapter" data-level="17.3" data-path="FinanceModels.html"><a href="http://srdas.github.io/MLBook/FinanceModels.html#vectorization"><i class="fa fa-check"></i><b>17.3</b> Vectorization</a></li>
+<li class="chapter" data-level="17.4" data-path="FinanceModels.html"><a href="http://srdas.github.io/MLBook/FinanceModels.html#bivariate-random-variables"><i class="fa fa-check"></i><b>17.4</b> Bivariate random variables</a></li>
+<li class="chapter" data-level="17.5" data-path="FinanceModels.html"><a href="http://srdas.github.io/MLBook/FinanceModels.html#multivariate-random-variables"><i class="fa fa-check"></i><b>17.5</b> Multivariate random variables</a></li>
+<li class="chapter" data-level="17.6" data-path="FinanceModels.html"><a href="http://srdas.github.io/MLBook/FinanceModels.html#portfolio-computations"><i class="fa fa-check"></i><b>17.6</b> Portfolio Computations</a></li>
+<li class="chapter" data-level="17.7" data-path="FinanceModels.html"><a href="http://srdas.github.io/MLBook/FinanceModels.html#optimal-portfolio"><i class="fa fa-check"></i><b>17.7</b> Optimal Portfolio</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="PortfolioOptimization.html"><a href="http://srdas.github.io/MLBook/PortfolioOptimization.html" title="18 Being Mean with Variance: Markowitz Optimization"><i class="fa fa-check"></i><b>18</b> Being Mean with Variance: Markowitz Optimization</a><ul>
+<li class="chapter" data-level="18.1" data-path="PortfolioOptimization.html"><a href="http://srdas.github.io/MLBook/PortfolioOptimization.html#diversification-of-a-portfolio-1"><i class="fa fa-check"></i><b>18.1</b> Diversification of a portfolio</a></li>
+<li class="chapter" data-level="18.2" data-path="PortfolioOptimization.html"><a href="http://srdas.github.io/MLBook/PortfolioOptimization.html#markowitz-portfolio-problem"><i class="fa fa-check"></i><b>18.2</b> Markowitz Portfolio Problem</a></li>
+<li class="chapter" data-level="18.3" data-path="PortfolioOptimization.html"><a href="http://srdas.github.io/MLBook/PortfolioOptimization.html#the-solution-by-lagrange-multipliers" title="18.3 The Solution by Lagrange Multipliers"><i class="fa fa-check"></i><b>18.3</b> The Solution by Lagrange Multipliers</a></li>
+<li class="chapter" data-level="18.4" data-path="PortfolioOptimization.html"><a href="http://srdas.github.io/MLBook/PortfolioOptimization.html#optimization"><i class="fa fa-check"></i><b>18.4</b> Optimization</a></li>
+<li class="chapter" data-level="18.5" data-path="PortfolioOptimization.html"><a href="http://srdas.github.io/MLBook/PortfolioOptimization.html#notes-on-the-solution"><i class="fa fa-check"></i><b>18.5</b> Notes on the solution</a></li>
+<li class="chapter" data-level="18.6" data-path="PortfolioOptimization.html"><a href="http://srdas.github.io/MLBook/PortfolioOptimization.html#the-function"><i class="fa fa-check"></i><b>18.6</b> The Function</a></li>
+<li class="chapter" data-level="18.7" data-path="PortfolioOptimization.html"><a href="http://srdas.github.io/MLBook/PortfolioOptimization.html#example-8"><i class="fa fa-check"></i><b>18.7</b> Example</a></li>
+<li class="chapter" data-level="18.8" data-path="PortfolioOptimization.html"><a href="http://srdas.github.io/MLBook/PortfolioOptimization.html#a-different-expected-return"><i class="fa fa-check"></i><b>18.8</b> A different expected return</a></li>
+<li class="chapter" data-level="18.9" data-path="PortfolioOptimization.html"><a href="http://srdas.github.io/MLBook/PortfolioOptimization.html#numerical-optimization-with-constraints" title="18.9 Numerical Optimization with Constraints"><i class="fa fa-check"></i><b>18.9</b> Numerical Optimization with Constraints</a></li>
+<li class="chapter" data-level="18.10" data-path="PortfolioOptimization.html"><a href="http://srdas.github.io/MLBook/PortfolioOptimization.html#the-efficient-frontier"><i class="fa fa-check"></i><b>18.10</b> The Efficient Frontier</a></li>
+<li class="chapter" data-level="18.11" data-path="PortfolioOptimization.html"><a href="http://srdas.github.io/MLBook/PortfolioOptimization.html#covariances-of-frontier-portfolios" title="18.11 Covariances of frontier portfolios"><i class="fa fa-check"></i><b>18.11</b> Covariances of frontier portfolios</a></li>
+<li class="chapter" data-level="18.12" data-path="PortfolioOptimization.html"><a href="http://srdas.github.io/MLBook/PortfolioOptimization.html#combinations"><i class="fa fa-check"></i><b>18.12</b> Combinations</a><ul style="display: none;">
+<li class="chapter" data-level="18.12.1" data-path="PortfolioOptimization.html"><a href="http://srdas.github.io/MLBook/PortfolioOptimization.html#exercise"><i class="fa fa-check"></i><b>18.12.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="18.13" data-path="PortfolioOptimization.html"><a href="http://srdas.github.io/MLBook/PortfolioOptimization.html#portfolio-problem-with-riskless-assets" title="18.13 Portfolio problem with riskless assets"><i class="fa fa-check"></i><b>18.13</b> Portfolio problem with riskless assets</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="DigitalPortfolios.html"><a href="http://srdas.github.io/MLBook/DigitalPortfolios.html" title="19 Zero or One: Optimal Digital Portfolios"><i class="fa fa-check"></i><b>19</b> Zero or One: Optimal Digital Portfolios</a><ul>
+<li class="chapter" data-level="19.1" data-path="DigitalPortfolios.html"><a href="http://srdas.github.io/MLBook/DigitalPortfolios.html#digital-assets"><i class="fa fa-check"></i><b>19.1</b> Digital Assets</a></li>
+<li class="chapter" data-level="19.2" data-path="DigitalPortfolios.html"><a href="http://srdas.github.io/MLBook/DigitalPortfolios.html#modeling-digital-portfolios"><i class="fa fa-check"></i><b>19.2</b> Modeling Digital Portfolios</a></li>
+<li class="chapter" data-level="19.3" data-path="DigitalPortfolios.html"><a href="http://srdas.github.io/MLBook/DigitalPortfolios.html#fast-computation-approach"><i class="fa fa-check"></i><b>19.3</b> Fast Computation Approach</a></li>
+<li class="chapter" data-level="19.4" data-path="DigitalPortfolios.html"><a href="http://srdas.github.io/MLBook/DigitalPortfolios.html#combining-conditional-distributions" title="19.4 Combining conditional distributions"><i class="fa fa-check"></i><b>19.4</b> Combining conditional distributions</a></li>
+<li class="chapter" data-level="19.5" data-path="DigitalPortfolios.html"><a href="http://srdas.github.io/MLBook/DigitalPortfolios.html#stochastic-dominance-sd"><i class="fa fa-check"></i><b>19.5</b> Stochastic Dominance (SD)</a></li>
+<li class="chapter" data-level="19.6" data-path="DigitalPortfolios.html"><a href="http://srdas.github.io/MLBook/DigitalPortfolios.html#portfolio-characteristics"><i class="fa fa-check"></i><b>19.6</b> Portfolio Characteristics</a></li>
+<li class="chapter" data-level="19.7" data-path="DigitalPortfolios.html"><a href="http://srdas.github.io/MLBook/DigitalPortfolios.html#how-many-assets"><i class="fa fa-check"></i><b>19.7</b> How many assets?</a></li>
+<li class="chapter" data-level="19.8" data-path="DigitalPortfolios.html"><a href="http://srdas.github.io/MLBook/DigitalPortfolios.html#the-impact-of-correlation"><i class="fa fa-check"></i><b>19.8</b> The impact of correlation</a></li>
+<li class="chapter" data-level="19.9" data-path="DigitalPortfolios.html"><a href="http://srdas.github.io/MLBook/DigitalPortfolios.html#uneven-bets"><i class="fa fa-check"></i><b>19.9</b> Uneven bets?</a></li>
+<li class="chapter" data-level="19.10" data-path="DigitalPortfolios.html"><a href="http://srdas.github.io/MLBook/DigitalPortfolios.html#mixing-safe-and-risky-assets"><i class="fa fa-check"></i><b>19.10</b> Mixing safe and risky assets</a></li>
+<li class="chapter" data-level="19.11" data-path="DigitalPortfolios.html"><a href="http://srdas.github.io/MLBook/DigitalPortfolios.html#conclusions"><i class="fa fa-check"></i><b>19.11</b> Conclusions</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="Gambling.html"><a href="http://srdas.github.io/MLBook/Gambling.html" title="20 Against the Odds: The Mathematics of Gambling"><i class="fa fa-check"></i><b>20</b> Against the Odds: The Mathematics of Gambling</a><ul>
+<li class="chapter" data-level="20.1" data-path="Gambling.html"><a href="http://srdas.github.io/MLBook/Gambling.html#introduction-4"><i class="fa fa-check"></i><b>20.1</b> Introduction</a></li>
+<li class="chapter" data-level="20.2" data-path="Gambling.html"><a href="http://srdas.github.io/MLBook/Gambling.html#odds"><i class="fa fa-check"></i><b>20.2</b> Odds</a></li>
+<li class="chapter" data-level="20.3" data-path="Gambling.html"><a href="http://srdas.github.io/MLBook/Gambling.html#edge"><i class="fa fa-check"></i><b>20.3</b> Edge</a></li>
+<li class="chapter" data-level="20.4" data-path="Gambling.html"><a href="http://srdas.github.io/MLBook/Gambling.html#bookmakers"><i class="fa fa-check"></i><b>20.4</b> Bookmakers</a></li>
+<li class="chapter" data-level="20.5" data-path="Gambling.html"><a href="http://srdas.github.io/MLBook/Gambling.html#the-kelly-criterion"><i class="fa fa-check"></i><b>20.5</b> The Kelly Criterion</a></li>
+<li class="chapter" data-level="20.6" data-path="Gambling.html"><a href="http://srdas.github.io/MLBook/Gambling.html#simulation-of-the-betting-strategy" title="20.6 Simulation of the betting strategy"><i class="fa fa-check"></i><b>20.6</b> Simulation of the betting strategy</a></li>
+<li class="chapter" data-level="20.7" data-path="Gambling.html"><a href="http://srdas.github.io/MLBook/Gambling.html#half-kelly"><i class="fa fa-check"></i><b>20.7</b> Half-Kelly</a></li>
+<li class="chapter" data-level="20.8" data-path="Gambling.html"><a href="http://srdas.github.io/MLBook/Gambling.html#deriving-the-kelly-criterion"><i class="fa fa-check"></i><b>20.8</b> Deriving the Kelly Criterion</a></li>
+<li class="chapter" data-level="20.9" data-path="Gambling.html"><a href="http://srdas.github.io/MLBook/Gambling.html#entropy"><i class="fa fa-check"></i><b>20.9</b> Entropy</a></li>
+<li class="chapter" data-level="20.10" data-path="Gambling.html"><a href="http://srdas.github.io/MLBook/Gambling.html#linking-the-kelly-criterion-to-entropy" title="20.10 Linking the Kelly Criterion to Entropy"><i class="fa fa-check"></i><b>20.10</b> Linking the Kelly Criterion to Entropy</a></li>
+<li class="chapter" data-level="20.11" data-path="Gambling.html"><a href="http://srdas.github.io/MLBook/Gambling.html#linking-the-kelly-criterion-to-portfolio-optimization" title="20.11 Linking the Kelly criterion to portfolio optimization"><i class="fa fa-check"></i><b>20.11</b> Linking the Kelly criterion to portfolio optimization</a></li>
+<li class="chapter" data-level="20.12" data-path="Gambling.html"><a href="http://srdas.github.io/MLBook/Gambling.html#implementing-day-trading"><i class="fa fa-check"></i><b>20.12</b> Implementing day trading</a></li>
+<li class="chapter" data-level="20.13" data-path="Gambling.html"><a href="http://srdas.github.io/MLBook/Gambling.html#casino-games"><i class="fa fa-check"></i><b>20.13</b> Casino Games</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="Auctions.html"><a href="http://srdas.github.io/MLBook/Auctions.html"><i class="fa fa-check"></i><b>21</b> Bidding it Up: Auctions</a><ul>
+<li class="chapter" data-level="21.1" data-path="Auctions.html"><a href="http://srdas.github.io/MLBook/Auctions.html#introduction-5"><i class="fa fa-check"></i><b>21.1</b> Introduction</a></li>
+<li class="chapter" data-level="21.2" data-path="Auctions.html"><a href="http://srdas.github.io/MLBook/Auctions.html#overview-2"><i class="fa fa-check"></i><b>21.2</b> Overview</a></li>
+<li class="chapter" data-level="21.3" data-path="Auctions.html"><a href="http://srdas.github.io/MLBook/Auctions.html#auction-types"><i class="fa fa-check"></i><b>21.3</b> Auction types</a></li>
+<li class="chapter" data-level="21.4" data-path="Auctions.html"><a href="http://srdas.github.io/MLBook/Auctions.html#value-determination"><i class="fa fa-check"></i><b>21.4</b> Value Determination</a></li>
+<li class="chapter" data-level="21.5" data-path="Auctions.html"><a href="http://srdas.github.io/MLBook/Auctions.html#bidder-types"><i class="fa fa-check"></i><b>21.5</b> Bidder Types</a></li>
+<li class="chapter" data-level="21.6" data-path="Auctions.html"><a href="http://srdas.github.io/MLBook/Auctions.html#benchmark-model-bm"><i class="fa fa-check"></i><b>21.6</b> Benchmark Model (BM)</a></li>
+<li class="chapter" data-level="21.7" data-path="Auctions.html"><a href="http://srdas.github.io/MLBook/Auctions.html#properties-of-the-bm"><i class="fa fa-check"></i><b>21.7</b> Properties of the BM</a></li>
+<li class="chapter" data-level="21.8" data-path="Auctions.html"><a href="http://srdas.github.io/MLBook/Auctions.html#auction-math-and-stats-sellers-expected-revenue" title="21.8 Auction Math and Stats: Seller’s Expected Revenue"><i class="fa fa-check"></i><b>21.8</b> Auction Math and Stats: Seller’s Expected Revenue</a></li>
+<li class="chapter" data-level="21.9" data-path="Auctions.html"><a href="http://srdas.github.io/MLBook/Auctions.html#optimization-by-bidders"><i class="fa fa-check"></i><b>21.9</b> Optimization by bidders</a><ul style="display: none;">
+<li class="chapter" data-level="21.9.1" data-path="Auctions.html"><a href="http://srdas.github.io/MLBook/Auctions.html#example-9"><i class="fa fa-check"></i><b>21.9.1</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="21.10" data-path="Auctions.html"><a href="http://srdas.github.io/MLBook/Auctions.html#treasury-auctions"><i class="fa fa-check"></i><b>21.10</b> Treasury Auctions</a></li>
+<li class="chapter" data-level="21.11" data-path="Auctions.html"><a href="http://srdas.github.io/MLBook/Auctions.html#dpa-or-upa"><i class="fa fa-check"></i><b>21.11</b> DPA or UPA?</a></li>
+<li class="chapter" data-level="21.12" data-path="Auctions.html"><a href="http://srdas.github.io/MLBook/Auctions.html#collusion"><i class="fa fa-check"></i><b>21.12</b> Collusion</a></li>
+<li class="chapter" data-level="21.13" data-path="Auctions.html"><a href="http://srdas.github.io/MLBook/Auctions.html#web-advertising-auctions"><i class="fa fa-check"></i><b>21.13</b> Web Advertising Auctions</a></li>
+<li class="chapter" data-level="21.14" data-path="Auctions.html"><a href="http://srdas.github.io/MLBook/Auctions.html#quick-tutorial-on-google-ad-auctions" title="21.14 Quick tutorial on Google Ad Auctions"><i class="fa fa-check"></i><b>21.14</b> Quick tutorial on Google Ad Auctions</a></li>
+<li class="chapter" data-level="21.15" data-path="Auctions.html"><a href="http://srdas.github.io/MLBook/Auctions.html#next-price-auctions"><i class="fa fa-check"></i><b>21.15</b> Next Price Auctions</a></li>
+<li class="chapter" data-level="21.16" data-path="Auctions.html"><a href="http://srdas.github.io/MLBook/Auctions.html#laddered-auction"><i class="fa fa-check"></i><b>21.16</b> Laddered Auction</a></li>
+<li class="chapter" data-level="21.17" data-path="Auctions.html"><a href="http://srdas.github.io/MLBook/Auctions.html#remaining-questions-to-ponder" title="21.17 Remaining questions to ponder"><i class="fa fa-check"></i><b>21.17</b> Remaining questions to ponder</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="http://srdas.github.io/MLBook/references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body fixed">
+      <div class="body-inner">
+        <div class="book-header fixed" role="navigation" style="background-color: rgb(255, 255, 255);">
+          <a class="btn pull-left js-toolbar-action" aria-label="" href="http://srdas.github.io/MLBook/#"><i class="fa fa-align-justify"></i></a><a class="btn pull-left js-toolbar-action" aria-label="Search" href="http://srdas.github.io/MLBook/#"><i class="fa fa-search"></i></a><div class="dropdown pull-right  js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Share" href="http://srdas.github.io/MLBook/#"><i class="fa fa-share-alt"></i></a><div class="dropdown-menu dropdown-left"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-5 ">Facebook</button><button class="button size-5 ">Google+</button><button class="button size-5 ">Twitter</button><button class="button size-5 ">Weibo</button><button class="button size-5 ">Instapaper</button></div></div></div><a class="btn pull-right js-toolbar-action" aria-label="" href="http://srdas.github.io/MLBook/#"><i class="fa fa-facebook"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="http://srdas.github.io/MLBook/#"><i class="fa fa-twitter"></i></a><div class="dropdown pull-left font-settings js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Font Settings" href="http://srdas.github.io/MLBook/#"><i class="fa fa-font"></i></a><div class="dropdown-menu dropdown-right"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-2 font-reduce">A</button><button class="button size-2 font-enlarge">A</button></div><div class="buttons"><button class="button size-2 ">Serif</button><button class="button size-2 ">Sans</button></div><div class="buttons"><button class="button size-3 ">White</button><button class="button size-3 ">Sepia</button><button class="button size-3 ">Night</button></div></div></div><a class="btn pull-left js-toolbar-action" aria-label="Edit" href="http://srdas.github.io/MLBook/#"><i class="fa fa-edit"></i></a><a class="btn pull-left js-toolbar-action" aria-label="PDF" href="http://srdas.github.io/MLBook/#"><i class="fa fa-file-pdf-o"></i></a><h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="http://srdas.github.io/MLBook/">Data Science: Theories, Models, Algorithms, and Analytics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Data Science: Theories, Models, Algorithms, and Analytics</h1>
+<h4 class="author"><em>Sanjiv Ranjan Das</em></h4>
+<h4 class="date"><em>2017-03-24</em></h4>
+</div>
+<div id="preface" class="section level1 unnumbered">
+<h1>Preface</h1>
+<p>I developed these class notes for my Machine Learning with R course. It traces my evolution as a data scientist into redundancy, I expect I will be replaced by a machine soon! There is a lot of work remaining to be done on this, including adding many more citations, replacing figures, and making sure full attribution is provided for all referenced material. Please do not cite or distribute at this time. Several chapters remain to be added.</p>
+<p><img src="./libs/EvolutionDataScientist.png" width="75%" style="display: block; margin: auto;"></p>
+<p><strong>Prologue</strong></p>
+<blockquote>
+<p>“The future is already here; it’s just not very evenly distributed.” – <em>William Gibson</em></p>
+</blockquote>
+
+<blockquote>
+<p>“The public is more familiar with bad design than good design. It is, in effect, conditioned to prefer bad design, because that is what it lives with. The new becomes threatening, the old reassuring.” – <em>Paul Rand</em></p>
+</blockquote>
+
+<blockquote>
+<p>“It seems that perfection is attained not when there is nothing left to add, but when there is nothing more to remove.” – <em>Antoine de Saint-Exupery</em></p>
+</blockquote>
+
+<blockquote>
+<p>“In God we trust, all others bring data.” – <em>William Edwards Deming</em></p>
+</blockquote>
+<p><strong>License</strong></p>
+<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this book except in compliance with the License. You may obtain a copy of the License at <a href="http://www.apache.org/licenses/LICENSE-2.0" class="uri">http://www.apache.org/licenses/LICENSE-2.0</a>. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “as is” basis, without warranties or conditions of any kind, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
+<p><strong>Acknowledgements</strong></p>
+<p><img src="./libs/CalvinHobbes.png" width="95%" style="display: block; margin: auto;"></p>
+<p>I am extremely grateful to the following friends, students, and readers (mutually non-exclusive) who offered me feedback on these chapters. I am most grateful to John Heineke for his constant feedback and continuous encouragement. All the following students made helpful suggestions on the manuscript: Sumit Agarwal, Kevin Aguilar, Sankalp Bansal, Sivan Bershan, Ali Burney, Monalisa Chati, Jian-Wei Cheng, Chris Gadek, Karl Hennig, Pochang Hsu, Justin Ishikawa, Ravi Jagannathan, Alice Yehjin Jun, Seoyoung Kim, Bhushan Kothari, Ram Kumar, Federico Morales, Antonio Piccolboni, Shaharyar Shaikh, Jean-Marc Soumet, Rakesh Sountharajan, Greg Tseng, Dan Wong, Jeffrey Woo.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="http://srdas.github.io/MLBook/DataScience.html" class="navigation navigation-next navigation-unique" aria-label="Next page" "="" style="margin-right: 17px;"><i class="fa fa-angle-right"></i></a>
+
+<script src="./libs/app.min.js.download"></script>
+<script src="./libs/lunr.js.download"></script>
+<script src="./libs/plugin-search.js.download"></script>
+<script src="./libs/plugin-sharing.js.download"></script>
+<script src="./libs/plugin-fontsettings.js.download"></script>
+<script src="./libs/plugin-bookdown.js.download"></script>
+<script src="./libs/jquery.highlight.js.download"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"text": "Edit"
+},
+"download": ["DSTMAA.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+
+
+</div></div><div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: MathJax_Main, sans-serif;"></div></div><input id="ext-version" type="hidden" value="1.2.3"></body></html>
